@@ -11,3 +11,4 @@ scipy>=1.4.1
 seaborn>=0.10.1
 sklearn>=0.0
 pytube3>=9.6.4
+argparse>=1.4.0

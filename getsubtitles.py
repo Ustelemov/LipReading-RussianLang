@@ -28,12 +28,12 @@ source = YouTube(url)
 caption = source.captions.get_by_language_code('ru')
 if caption==None:
   print("No russian subtitles found")
-  return
-caption_srt =(caption.generate_srt_captions())
-math = re.findall(r'(?<=\d\n).*\n(?=\n\d)',caption_srt)
+#Если русские суббтитры были найдены
+else:
+  caption_srt =(caption.generate_srt_captions())
+  math = re.findall(r'(?<=\d\n).*\n(?=\n\d)',caption_srt)
 
-with open(output_path+'/subtitles.txt', 'w') as f:
-  for item in math:
-    f.write("%s" % item)
-
-print("Succesed")
+  with open(output_path+'/subtitles.txt', 'w') as f:
+    for item in math:
+        f.write("%s" % item)
+  print("Succesed")

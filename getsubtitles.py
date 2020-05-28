@@ -36,4 +36,4 @@ else:
   with open(output_path+'/subtitles.txt', 'w') as f:
     for item in math:
         f.write("%s" % item)
-  print("Succesed")
+  print("Succesed saved to %s"%(output_path+'/subtitles.txt'))

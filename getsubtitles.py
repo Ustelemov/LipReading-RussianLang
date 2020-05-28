@@ -9,7 +9,7 @@ import argparse
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Download subtitels from Youtube in txt-format')
 parser.add_argument('--u', dest="url",type=str,required=True,help='URL of Youtube video which will processing')
-parser.add_argument('--p',dest="path",type=str,default="/default",help="Path where to store files")
+parser.add_argument('--p',dest="path",type=str,default="/default",help="Path where to store file")
 
 args = parser.parse_args()
 

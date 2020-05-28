@@ -3,7 +3,6 @@ import os
 from pytube import YouTube
 from pytube import cli
 from pytube import Caption
-from moviepy.editor import *
 
 import argparse
 

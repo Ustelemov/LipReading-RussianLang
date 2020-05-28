@@ -23,6 +23,7 @@ pip install -r requirements.txt
 python getcaption.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog'
 ```
 --u - ссылка на видео
+
 --p - путь к папке, в которую будет помещен файл subtitles.txt. Дефолтно: /default
 
 ## Отчетная информация

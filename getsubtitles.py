@@ -32,7 +32,7 @@ if caption==None:
 caption_srt =(caption.generate_srt_captions())
 math = re.findall(r'(?<=\d\n).*\n(?=\n\d)',caption_srt)
 
-with open(output_path+'/caption.txt', 'w') as f:
+with open(output_path+'/subtitles.txt', 'w') as f:
   for item in math:
     f.write("%s" % item)
 

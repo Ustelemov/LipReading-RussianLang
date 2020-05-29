@@ -35,5 +35,6 @@ else:
   with open(output_path+'/subtitles.txt', 'w') as f:
     for item in math:
         f.write("%s" % item)
-  print('Video: %s with lengtn in second: %s processed'%(source.title,source.length))
+  print('Video title: %s'%(source.title))
+  print('Video length: %s secs'%(source.length))
   print("Subtitles saved with success to %s"%(output_path+'/subtitles.txt'))

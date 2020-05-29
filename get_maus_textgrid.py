@@ -1,6 +1,7 @@
 import argparse
 import re
 import urllib.request as urllib
+import subprocess
 
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Download subtitels from Youtube in txt-format')

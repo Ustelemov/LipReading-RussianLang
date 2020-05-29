@@ -2,8 +2,8 @@
 - [README.md](README.md) - Описание репозитория
 - [requirements.txt](requirements.txt) - Список зависимостей
 - [Документация](docs/)
-  - [FORMALIZATION.MD](docs/FORMALIZATION.MD) - формальное описание работы: проблематика, цели, задачи, развитие и пр.
-  - [DESCRIPTION.MD](docs/DESCRIPTION.MD) - комментарии, описание, полезные ссылки
+  - [FORMALIZATION.MD](docs/FORMALIZATION.md) - формальное описание работы: проблематика, цели, задачи, развитие и пр.
+  - [DESCRIPTION.MD](docs/DESCRIPTION.md) - комментарии, описание, полезные ссылки
 - [Скрипты](scripts/)
   - [get_info_from_youtube.py](scripts/get_info_from_youtube.py) - получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav и mp3
   - [get_maus_textgrid.py](scripts/get_maus_textgrid.py) - получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment

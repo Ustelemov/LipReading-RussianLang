@@ -13,8 +13,6 @@ parser.add_argument('--o', dest="out_path",type=str,default='/default/out_words.
 
 args = parser.parse_args()
 
-
-#адрес ютуб видео
 in_path = args.in_path
 out_path = args.out_path
 
@@ -24,20 +22,25 @@ words_capacity=99*1000
 with open(in_path) as f:
     words = f.readlines()
 
-#Найдем и заменим - и . на пустоту
+words_len = len(words)
+print('Words in file: %d'%(words_len))
+
+
+#Если любой несловарный символ, кроме - и \n - пропускаем
+#Если -, то просто объеденим слова (вместо - пусота)
+words_regexed = []
 for i in range(len(words)):
     source = words[i]
-    wo_dot = re.sub(r'[.]+','',source)
-    wo_dash = re.sub(r'[-]+','',wo_dot)
-    wo_slash = re.sub(r'[/]+','',wo_dash)
-    words[i]=wo_slash
+    if len(re.findall(r'[^-А-Яа-яё\n]+',source))>0:
+      continue
+    wo_dash = re.sub(r'[-]+','',source)
+    words_regexed.append(wo_dash)
 
-
-words_len = len(words)
-print('Words in file before distinct: %d'%(words_len))
+words_len = len(words_regexed)
+print('Words in file after regexing: %d'%(words_len))
 
 #Удалим повторы
-words_set = list(set(words))
+words_set = list(set(words_regexed))
 #words_set.sort() - если потребуется сортировка в дальнейшем
 
 words_len = len(words_set)

@@ -4,7 +4,7 @@ import urllib.request as urllib
 
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Download subtitels from Youtube in txt-format')
-parse.add_argument('--p',dest='output_path',type=str,help='output path to file',default='/default')
+parser.add_argument('--p',dest='output_path',type=str,help='output path to file',default='/default')
 parser.add_argument('--a', dest="audio_path",type=str,required=True,help='path to wav file')
 parser.add_argument('--t', dest="text_path",type=str,required=True,help='path to txt file')
 

@@ -60,7 +60,7 @@ for i in range(parts+1):
   with open('tmp.txt', 'w') as f:
       f.writelines(words_set[start:end])
 
-  CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F com=no -F tgrate=16000 -F stress=no -F lng=rus-RU -F lowercase=yes -F syl=no -F outsym=maus-sampa -F nrm=no -F i=@'/content/tmp.txt' -F tgitem=ort -F align=no -F featset=standard -F iform=txt -F embed=no -F oform=txt 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runG2P'"
+  CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F com=no -F tgrate=16000 -F stress=no -F lng=rus-RU -F lowercase=yes -F syl=no -F outsym=maus-sampa -F nrm=no -F i=@'tmp.txt' -F tgitem=ort -F align=no -F featset=standard -F iform=txt -F embed=no -F oform=txt 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runG2P'"
   status, output = subprocess.getstatusoutput(CurlUrl)
 
   link = re.findall(r'(?<=<downloadLink>).*(?=</downloadLink>)',output)[0]

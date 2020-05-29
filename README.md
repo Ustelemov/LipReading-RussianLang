@@ -6,6 +6,7 @@
   - [DESCRIPTION.MD](docs/DESCRIPTION.MD) - комментарии, описание, полезные ссылки
 - [Скрипты](scripts/)
   - [get_info_from_youtube.py](scripts/get_info_from_youtube.py) - получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav и mp3
+  - [get_maus_textgrid.py](scripts/get_maus_textgrid.py) - 
 ## Использование
 ### 
 ### Установка зависимостей
@@ -22,7 +23,7 @@ python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k
 - --s - секунда старта для обрезки видео
 - --e - секунда окончания для обрезки видео
 
-### Получение textGrid от MAUS TextAlignment
+### Получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment
 ```
 python get_maus_textgrid.py --a '/content/pedagog/audio.wav' --t '/content/pedagog/subtitles.txt' --p '/content/pedagog'
 ```
@@ -33,6 +34,6 @@ python get_maus_textgrid.py --a '/content/pedagog/audio.wav' --t '/content/pedag
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~
 - [X] 2. ~~Создать скрипт для получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav и mp3~~
-- [X] 3. ~~Создать скрипт для получения textGrid с MAUS TextAligner~~
+- [X] 3. ~~Создать скрипт для получения разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment~~
 - [ ] 4. Создать скрипт для получения из словаря слов словаря слово->фонемная транскрипция
 - [ ] 5. Добавить словари: слова->транскрипции по фонемам, словарь фонем (с ключом и значением, для работы классификатора), словарь фонем с примерами использования

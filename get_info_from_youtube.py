@@ -46,13 +46,13 @@ args = parser.parse_args()
 url = args.url
 
 #папка для выходных файлов
-output_path = arg.path
+output_path = args.path
 
 #начало обрезанного видео с ютуб
-start_sec = arg.start_sec
+start_sec = args.start_sec
 
 #конец обрезанного видео с ютуб
-end_sec = arg.end_sec
+end_sec = args.end_sec
 
 need_to_cut = True
 

@@ -20,7 +20,7 @@
 ```
 pip install -r requirements.txt
 ```
-### Скачивание суббтитров
+### Получение информации с Youtube-видео
 ```
 python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog' --s 0 --e 68
 ```

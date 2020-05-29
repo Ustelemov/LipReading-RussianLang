@@ -71,7 +71,7 @@ for i in range(parts+1):
   splited_html = html.split('\t')
 
   #Создадим массив со сторчками вида: {словo;фонемная транскрипция}
-  tmp_result = [('%s;%s\n'%(my_lines[start+i].split('\n')[0],splited_html[i])) for i in range(len(splited_html))]
+  tmp_result = [('%s;%s\n'%(words_set[start+i].split('\n')[0],splited_html[i])) for i in range(len(splited_html))]
 
   result.extend(tmp_result)
 

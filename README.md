@@ -32,10 +32,11 @@ python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k
 ### Получение textGrid от MAUS TextAlignment
 ```
 python get_maus_textgrid.py --a '/content/pedagog/audio.wav' --t '/content/pedagog/subtitles.txt' --p '/content/pedagog'
+```
 - --a - путь к wav файлу
 - --t - путь к txt файлу текстовой аннотации (транскрипции для wav файла)
 - --p - путь к папке, в которую будет положен выходной maus_out.TextGrid file
-```
+
 
 ## Отчетная информация
 #### Проблема

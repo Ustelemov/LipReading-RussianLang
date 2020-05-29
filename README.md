@@ -9,7 +9,10 @@
   - [get_maus_textgrid.py](scripts/get_maus_textgrid.py) - получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment
   - [create_words_phonemes_dict.py](scrips/create_words_phonemes_dict.py) - создание из словаря слов - словаря слово->фонемная транскрипция
 ## Использование
-### 
+### Установка (клонирование)
+```
+git clone https://github.com/Ustelemov/LiReading-RussianLang
+```
 ### Установка зависимостей
 Для установки всех требуемых зависимостей воспользуйтесь командой:
 ```

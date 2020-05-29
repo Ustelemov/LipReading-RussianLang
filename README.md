@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 ### Скачивание суббтитров
 ```
-python getcaption.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog'
+python getsubtitles.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog'
 ```
 --u - ссылка на видео
 

@@ -25,9 +25,10 @@ if not output_path_exists:
 #скачивание субтитры с ютуб в srt формате, удаляем лишнее - оставляем только текст, сохраняем в файл
 source = YouTube(url)
 caption = source.captions.get_by_language_code('ru')
-if caption==None:
+if source==None:
+  print("No video found, check url");
+elif caption==None:
   print("No russian subtitles found")
-#Если русские суббтитры были найдены
 else:
   caption_srt =(caption.generate_srt_captions())
   math = re.findall(r'(?<=\d\n).*\n(?=\n\d)',caption_srt)

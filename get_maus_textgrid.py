@@ -27,4 +27,4 @@ html = response.read().decode('utf-8')
 with open(file_path, 'w') as f:
     f.write(html)
 
-print('TextGrid from TextAligner MausBasic was successful save in:%s'%s(file_path))
+print('TextGrid from TextAligner MausBasic was successful save in:%s'%(file_path))

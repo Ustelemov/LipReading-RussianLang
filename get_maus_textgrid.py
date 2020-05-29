@@ -14,7 +14,7 @@ args = parser.parse_args()
 audio_path = args.audio_path
 text_path = args.text_path
 
-file_path = args.text_path+'/maus_out.TextGrid'
+file_path = args.output_path+'/maus_out.TextGrid'
 
 CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F SIGNAL=@%s -F LANGUAGE=rus-RU -F TEXT=@%s 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runMAUSBasic'"%(audio_path,text_path)
 status, output = subprocess.getstatusoutput(CurlUrl)

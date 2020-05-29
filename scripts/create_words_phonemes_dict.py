@@ -36,7 +36,8 @@ words_len = len(words)
 print('Words in file before distinct: %d'%(words_len))
 
 #Удалим повторы
-words_set = list(set(words)).sort()
+words_set = list(set(words))
+words_set.sort()
 
 words_len = len(words_set)
 print('Words in file after distinct: %d'%(words_len))

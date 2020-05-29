@@ -61,7 +61,7 @@ for i in range(parts+1):
         start = i*words_capacity
         end = (i+1)*words_capacity
 
-
+    print("Proccesing words %d-%d of %d"%(start,end,words_len))
     #Будем писать в файл для работы с curl
     with open('tmp.txt', 'w') as f:
         to_write = words_set[start:end]
@@ -79,7 +79,7 @@ for i in range(parts+1):
     splited_html = html.split('\t')
 
     #Создадим массив со сторчками вида: {словo;фонемная транскрипция}
-    tmp_result = [('%s;%s\n'%(words_set[start+i].split('\n')[0],splited_html[i])) for i in range(len(splited_html))]
+    tmp_result = [('%s;%s\n'%(words_set[start+i].split('\n')[0],splited_html[i].split('\n')[0])) for i in range(len(splited_html))]
 
     result.extend(tmp_result)
 

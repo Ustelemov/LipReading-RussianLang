@@ -11,7 +11,7 @@
 
 ## Структура проекта
 - README.md - Wiki по репозиторию
-- getsubtitles.py - получение суббтитров с Youtube-видео в txt формате: без знаков препинания, спаршенное с srt формата
+- get_info_from_youtube.py - получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav и mp3
 
 ## Использование
 ### 
@@ -22,11 +22,12 @@ pip install -r requirements.txt
 ```
 ### Скачивание суббтитров
 ```
-python getsubtitles.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog'
+python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog' --s 0 --e 68
 ```
---u - ссылка на видео
-
---p - путь к папке, в которую будет помещен файл subtitles.txt. Дефолтно: /default
+- --u - ссылка на видео
+- --p - путь к папке, в которую будет помещен файл subtitles.txt. Дефолтно: /default
+- --s - секунда старта для обрезки видео
+- --e - секунда окончания для обрезки видео
 
 ## Отчетная информация
 #### Проблема

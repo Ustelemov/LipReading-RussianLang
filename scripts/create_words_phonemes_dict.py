@@ -26,10 +26,11 @@ with open(in_path) as f:
 
 #Найдем и заменим - и . на пустоту
 for i in range(len(words)):
-  source = words[i]
-  wo_dot = re.sub(r'[.]+','',source)
-  wo_dash = re.sub(r'[-]+','',wo_dot)
-  words[i]=wo_dash
+    source = words[i]
+    wo_dot = re.sub(r'[.]+','',source)
+    wo_dash = re.sub(r'[-]+','',wo_dot)
+    wo_slash = re.sub(r'[/]+','',wo_dash)
+    words[i]=wo_slash
 
 
 words_len = len(words)
@@ -37,7 +38,7 @@ print('Words in file before distinct: %d'%(words_len))
 
 #Удалим повторы
 words_set = list(set(words))
-words_set.sort()
+#words_set.sort() - если потребуется сортировка в дальнейшем
 
 words_len = len(words_set)
 print('Words in file after distinct: %d'%(words_len))
@@ -50,31 +51,34 @@ over = words_len-words_capacity*parts
 result = []
 
 for i in range(parts+1):
-  if i==parts and over>0:
-    start = i*words_capacity
-    end = i*words_capacity+over
-  else:
-    start = i*words_capacity
-    end = (i+1)*words_capacity
+    if i==parts and over>0:
+        start = i*words_capacity
+        end = i*words_capacity+over
+    else:
+        start = i*words_capacity
+        end = (i+1)*words_capacity
 
-  #Будем писать в файл для работы с curl
-  with open('tmp.txt', 'w') as f:
-      f.writelines(words_set[start:end])
 
-  CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F com=no -F tgrate=16000 -F stress=no -F lng=rus-RU -F lowercase=yes -F syl=no -F outsym=maus-sampa -F nrm=no -F i=@'tmp.txt' -F tgitem=ort -F align=no -F featset=standard -F iform=txt -F embed=no -F oform=txt 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runG2P'"
-  status, output = subprocess.getstatusoutput(CurlUrl)
+    #Будем писать в файл для работы с curl
+    with open('tmp.txt', 'w') as f:
+        to_write = words_set[start:end]
+        to_write[-1]=to_write[-1].split('\n')[0]
+        f.writelines(to_write)
 
-  link = re.findall(r'(?<=<downloadLink>).*(?=</downloadLink>)',output)[0]
+    CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F com=no -F tgrate=16000 -F stress=no -F lng=rus-RU -F lowercase=yes -F syl=no -F outsym=maus-sampa -F nrm=no -F i=@'tmp.txt' -F tgitem=ort -F align=no -F featset=standard -F iform=txt -F embed=no -F oform=txt 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runG2P'"
+    status, output = subprocess.getstatusoutput(CurlUrl)
 
-  response = urllib.urlopen(link)
-  html = response.read().decode('utf-8')
+    link = re.findall(r'(?<=<downloadLink>).*(?=</downloadLink>)',output)[0]
 
-  splited_html = html.split('\t')
+    response = urllib.urlopen(link)
+    html = response.read().decode('utf-8')
 
-  #Создадим массив со сторчками вида: {словo;фонемная транскрипция}
-  tmp_result = [('%s;%s\n'%(words_set[start+i].split('\n')[0],splited_html[i])) for i in range(len(splited_html))]
+    splited_html = html.split('\t')
 
-  result.extend(tmp_result)
+    #Создадим массив со сторчками вида: {словo;фонемная транскрипция}
+    tmp_result = [('%s;%s\n'%(words_set[start+i].split('\n')[0],splited_html[i])) for i in range(len(splited_html))]
+
+    result.extend(tmp_result)
 
 #Уберем у последнего элемента лишние \n
 result[-1] = result[-1].split('\n')[0]

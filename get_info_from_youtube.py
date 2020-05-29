@@ -114,7 +114,8 @@ subprocess.call(command, shell=True)
 silentremove(mp3_path)
 command = "ffmpeg -i "+video_path+" -ab 192K -ac 2 -ar 44100 -vn -f mp3 "+mp3_path
 
-#Распечатаем информацию о результате работы  
+#Распечатаем информацию о результате работы 
+print('---------------------')
 print('Source video was successful download in: %s'%(video_path_ytb))
 print('Source video title: %s'%(source.title))
 printvideoinfo(video_path_ytb)

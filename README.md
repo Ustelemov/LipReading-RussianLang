@@ -29,11 +29,11 @@ python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k
 
 ### Получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment
 ```
-python get_maus_textgrid.py --a '/content/pedagog/audio.wav' --t '/content/pedagog/subtitles.txt' --p '/content/pedagog'
+python get_maus_textgrid.py --a '/content/pedagog/audio.wav' --t '/content/pedagog/subtitles.txt' --o '/content/pedagog/maus_out.TextGrid'
 ```
 - --a - путь к wav файлу
 - --t - путь к txt файлу текстовой аннотации (транскрипции для wav файла)
-- --p - путь к папке, в которую будет положен выходной maus_out.TextGrid file
+- --o - путь к TextGrid файлу, который будут создан
 
 ## Cоздание из словаря слов - словаря слово->фонемная транскрипция
 ```

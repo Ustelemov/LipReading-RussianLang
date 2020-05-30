@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c9a9e9cc2b47d77e6108a4bc96bebb2c6df3acda944d23626d1e64231826a5e4
-size 292
+dlib>=19.18.0
+face-recognition>=1.3.0
+matplotlib>=3.2.1
+moviepy>=0.2.3.5
+numpy>=1.18.4
+opencv-contrib-python>=4.1.2.30
+opencv-python>=4.1.2.30
+pandas>=1.0.3
+praatio>=4.1.0
+scipy>=1.4.1
+seaborn>=0.10.1
+sklearn>=0.0
+pytube3>=9.6.4
+argparse>=1.4.0
+imageio==2.4.1
+urllib3>=1.25.9

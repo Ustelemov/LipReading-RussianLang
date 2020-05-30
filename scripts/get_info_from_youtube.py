@@ -66,7 +66,7 @@ if start_sec<0 or end_sec<0 or start_sec>end_sec:
 video_path_ytb = output_path+'/video_ytb.mp4'
 video_path = output_path+'/video.mp4'
 wav_path = output_path+'/audio.wav'
-mp3_path = output_path+'/audio.mp3'
+#mp3_path = output_path+'/audio.mp3'
 subtitles_path = output_path+'/subtitles.txt'
 
 #Исходное и обрезанное видео - совпадают
@@ -110,9 +110,9 @@ silentremove(wav_path)
 command = "ffmpeg -i "+video_path+" -ab 192K -ac 2 -ar 44100 -vn -f wav "+wav_path
 subprocess.call(command, shell=True)
 
-#достаем аудиодоророжку с обрезанного видео в mp3
-silentremove(mp3_path)
-command = "ffmpeg -i "+video_path+" -ab 192K -ac 2 -ar 44100 -vn -f mp3 "+mp3_path
+# #достаем аудиодоророжку с обрезанного видео в mp3
+# silentremove(mp3_path)
+# command = "ffmpeg -i "+video_path+" -ab 192K -ac 2 -ar 44100 -vn -f mp3 "+mp3_path
 
 #Распечатаем информацию о результате работы 
 print('---------------------')
@@ -132,5 +132,5 @@ else:
     printvideoinfo(video_path)
     print('---------------------')
 
-print('mp3 saved in: %s'%(mp3_path))
+#print('mp3 saved in: %s'%(mp3_path))
 print('wav saved in: %s'%(wav_path))

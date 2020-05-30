@@ -57,12 +57,12 @@ python create_words_phonemes_dict.py --i '/content/words_1_5kk.txt' --o '/conten
 
 ## Создание русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
 ```
-python get_phonewords_frames.py --p '/content/pedagog' --t '/content/out.TextGrid' 
+python get_phonewords_frames.py --p '/content/pedagog' --t '/content/out.TextGrid'  --d '/content/LiReading-RussianLang/dicts/phonemes_keys.txt 
 ```
 - --p - путь к выходной папке, в которую буду помещены файлы. Дефолтно: /default
 - --t - путь к TextGrid файлу {Обязательный аргумент}
 - --f - кол-во FPS в видео. Дефолтно 25.0
-- --d - путь к словарю фонем с ключами. Дефолтно ./dicts/phonemes_keys.txt (учитывая распложение в репозитории)
+- --d - путь к словарю фонем с ключами {Обязательный аргумент}
 
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~

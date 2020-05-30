@@ -1,3 +1,9 @@
+## В работе использованы
+- [Функция silentremove](https://stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist) - удаление файла, если он существует
+- [Moviepy](https://github.com/Zulko/moviepy) - нарезка видео
+- [ffmpeg](https://github.com/kkroening/ffmpeg-python) - для извлечения аудио
+- [pytube](https://github.com/nficano/pytube/tree/8c598376bb2432a5ff25ef2cd0ed1080236d5d62) - работа с ютуб видео (скачивание видео, скачивание суббтитров, получение мета-информации)
+
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу
 ```

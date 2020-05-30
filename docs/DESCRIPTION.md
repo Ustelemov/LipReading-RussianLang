@@ -1,7 +1,7 @@
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу
 ```
-!curl -X GET http://clarin.phonetik.uni-muenchen.de/BASWebServices/services/help
+curl -X GET http://clarin.phonetik.uni-muenchen.de/BASWebServices/services/help
 ```
 Результат запроса приведен в [файле](maus_service_help.txt)
 

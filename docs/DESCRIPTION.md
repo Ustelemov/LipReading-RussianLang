@@ -1,3 +1,10 @@
+## Документация по запросам к сервисам MAUS
+Может быть получена по запросу
+```
+!curl -X GET http://clarin.phonetik.uni-muenchen.de/BASWebServices/services/help
+```
+Результат запроса приведен в [файле](maus_service_help.txt)
+
 ## Получение словаря G2P (Graphema-To-Phonema) 
 - Словарь русских слов (1531461 слов) взят с репозитория: https://github.com/danakt/russian-words
 - Для работы с G2P-MAUS (преобразователь слов в фонемную транскрипцию) требуется удалить знаки '.' и '-', а после - очистить от образовавшихся дублей

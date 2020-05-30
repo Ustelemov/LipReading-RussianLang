@@ -5,7 +5,7 @@ import subprocess
 
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Download subtitels from Youtube in txt-format')
-parser.add_argument('--p',dest='output_path',type=str,help='output path to file',default='/default')
+parser.add_argument('--o',dest='output_file',type=str,help='output path to TextGrid file',default='/default/maus_out.TextGrid')
 parser.add_argument('--a', dest="audio_path",type=str,required=True,help='path to wav file')
 parser.add_argument('--t', dest="text_path",type=str,required=True,help='path to txt file')
 
@@ -14,7 +14,7 @@ args = parser.parse_args()
 audio_path = args.audio_path
 text_path = args.text_path
 
-file_path = args.output_path+'/maus_out.TextGrid'
+file_path = args.output_file
 
 CurlUrl="curl -v -X POST -H 'content-type: multipart/form-data' -F SIGNAL=@%s -F LANGUAGE=rus-RU -F TEXT=@%s 'https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/runMAUSBasic'"%(audio_path,text_path)
 status, output = subprocess.getstatusoutput(CurlUrl)

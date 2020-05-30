@@ -93,4 +93,3 @@ make_words_frames_file(phonemeswords_frames_out,phonemes_words,fps)
 make_words_frames_file(words_frames_out,russian_words,fps)
 
 print('Files successful create in %s'%(output_path))
-print(phonemes_words)

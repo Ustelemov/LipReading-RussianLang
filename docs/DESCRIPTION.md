@@ -11,7 +11,7 @@ curl -X GET http://clarin.phonetik.uni-muenchen.de/BASWebServices/services/help
 - В скрипте [create_words_phonemes_dict.py](./scripts/create_words_phonemes_dict.py) используется [G2P-MAUS-Service](https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface/Grapheme2Phoneme) c Output Symbol inventory - maus-sampa, т.к. TextAligner-MAUS выдает результат также в данной нотации
 
 ## Как скачать папку в форме zip-архив с Google Colab
-Информация с [ссылка](https://stackoverflow.com/questions/50453428/how-do-i-download-multiple-files-or-an-entire-folder-from-google-colab)
+Информация с [stackoverflow](https://stackoverflow.com/questions/50453428/how-do-i-download-multiple-files-or-an-entire-folder-from-google-colab)
 ```
 !zip -r /content/pedagog.zip /content/pedagog
 from google.colab import files

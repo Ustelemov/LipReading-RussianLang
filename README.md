@@ -5,6 +5,7 @@
   - [FORMALIZATION.MD](docs/FORMALIZATION.md) - формальное описание работы: проблематика, цели, задачи, развитие и пр.
   - [DESCRIPTION.MD](docs/DESCRIPTION.md) - комментарии, описание, полезные ссылки
   - [maus_phonemes_info.txt](docs/maus_phonemes_info.txt) - информация по фонемам с сервиса MAUS
+  - [maus_service_help.txt](docs/maus_service_help.txt) - документация по запросам к сервисам MAUS
 - [Скрипты](scripts/)
   - [maus_phonemes_info.txt](docs/maus_phonemes_info.txt) - информация по фонемам с сервиса MAUS
   - [get_info_from_youtube.py](scripts/get_info_from_youtube.py) - получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav и mp3

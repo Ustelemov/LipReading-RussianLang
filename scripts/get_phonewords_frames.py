@@ -24,9 +24,9 @@ with fileinput.FileInput(tg_path, inplace=True, backup='.bak') as file:
 
 fps = args.fps
 
-phonemekeys_dict = '/content/phonemes_keys.txt'
+phonemekeys_dict = args.phonemekeys_dict
 
-output_path = '/content/pedagog'
+output_path = args.path
 
 tg = tgio.openTextgrid(tg_path)
 russian_words = tg.tierDict['ORT-MAU'].entryList

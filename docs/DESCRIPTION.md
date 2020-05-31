@@ -25,3 +25,11 @@ curl -X GET http://clarin.phonetik.uni-muenchen.de/BASWebServices/services/help
 from google.colab import files
 files.download("/content/pedagog.zip")
 ```
+## Полезные ссылки
+- [Форматирование MD страниц](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
+- [Инофрмация про FPS](https://balyberdin.com/hey/all/about-fps/)
+- [Хороший сайт про Git](https://rogerdudler.github.io/git-guide/)
+- [Инфа про Git 1](https://progr.interplanety.org/en/how-to-start-working-with-git-and-github/)
+- [Инфа про Git 2](https://opensource.com/article/18/1/step-step-guide-git)
+- [Инфа про Git 3](https://proglib.io/p/git-github-gitflow)
+- [Инфа про Git 4](https://htmlacademy.ru/blog/boost/tools/git-console)

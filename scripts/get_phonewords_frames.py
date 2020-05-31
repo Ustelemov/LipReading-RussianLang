@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(usage='Create phonemes by frames, phonemes tran
 parser.add_argument('--f', dest="fps",type=float,default=25.0,help='Frames-per-second in video')
 parser.add_argument('--p',dest="path",type=str,default="/default",help="Path where to store files")
 parser.add_argument('--t',dest="tg_path",type=str,required=True,help="Path to TextGrid input file")
-parser.add_argument('--d',dest='phonemekeys_dict',type=str,required=True)
+parser.add_argument('--d',dest='phonemekeys_dict',type=str,required=True, help="Path to phonemes-keys dictionary")
 
 
 args = parser.parse_args()

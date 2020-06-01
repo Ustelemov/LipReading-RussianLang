@@ -9,9 +9,21 @@ parser = argparse.ArgumentParser(usage='Create statistic info about phonemes app
 parser.add_argument('--p',dest="path",type=str,default="/default",help="Path where to store files")
 parser.add_argument('--d',dest='phonemekeys_dict',type=str,required=True, help="Path to phonemes-keys dictionary-file")
 parser.add_argument('--f',dest='phonemes_frames',type=str,required=True, help="Path to phonemes by frames file")
+parser.add_argument('--e',dest='exclude_p',type=bool,default=False, help="Exclude <p:> phoneme or not")
 
 
 args = parser.parse_args()
+
+
+#Исключать ли <p:>
+exclude_p = args.exclude_p
+
+#Лист фонем, которые не включаются в статистику
+exception_list = ['<p:>'] #в основном будет исключаться <p:>, но при необходимости можно будет расширить
+
+#Если не надо исключать - сделаем список исключения пустым
+if exclude_p==False:
+  exception_list=[]
 
 #путь к словарю фонем
 phonemes_dict_path = args.phonemekeys_dict
@@ -52,6 +64,9 @@ with open(phonemes_dict_path,'r') as f:
 #Создадим словарь <фонема, массив>
 for el in phonemes:
   phoneme = el.split(' ')[0]
+  #Если фонема в листе исключений, не будем добавлять её
+  if phoneme in exception_list:
+    continue
   info_dict[phoneme] = []
 
 #Считаем фонемы по кадрам
@@ -66,9 +81,12 @@ count_frames = len(phoneme_frames)
 
 tmp_count = 1
 
-#Заполним словарь: ключ - фонем, значение - список встреч фонемы (одна встреча - один элемент, каждый элемент - длительность в кадрах)
+#Заполним словарь: ключ - фонема, значение - список встреч фонемы (одна встреча - один элемент, каждый элемент - длительность в кадрах)
 for i in range(count_frames):
   this_ph = phoneme_frames[i]
+  #Если фонема в листе исключений - пропустим её
+  if this_ph in exception_list:
+    continue
   #Если последняя
   if i == count_frames -1:
     next_ph = None
@@ -97,6 +115,7 @@ counts_percent_list = [round(i*100.0/count_df.sum(),1) for i in count_df]
 #Создадим общий DataFrame, который выведем в файл
 count_df = pd.DataFrame({'count': count_df,'count_percent':counts_percent_list},index=phonemes)
 
+
 #Запишем информацию в файле
 with open(text_stat_path,'w') as f:
   f.writelines('В данном файле указана статистка о встрече фонем\n')
@@ -108,14 +127,16 @@ with open(text_stat_path,'w') as f:
   f.writelines(count_df['count'].transpose().agg(['sum','min','max','mean','std']).to_string())
 print('Text file with statistic was create in: %s'%(text_stat_path))
 
+count_df = count_df.reset_index().sort_values('count')
+
 #Нарисуем график количества появлений по фонемам
 fig,ax = plt.subplots(figsize=figsize, dpi=dpi)
-ax.bar(phonemes, count_df['count'], color=bars_col, width=.7)
-for i, val in enumerate(count_df['count'].values):
-    plt.text(i, val, int(val), horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':10})
+ax.bar(count_df['index'], count_df['count'], color=bars_col, width=.5)
+for i, val in enumerate(count_df['count']):
+    plt.text(i, val, int(val), horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':8})
 
-ax.set_xticklabels(phonemes, rotation=60, horizontalalignment= 'right')
-ax.set_title("Распределение количества появлений по фонемам", fontsize=22)
+ax.set_xticklabels(count_df['index'], rotation=60, horizontalalignment= 'right')
+ax.set_title("Распределение количества появлений по фонемам", fontsize=18)
 ax.set_ylabel("Количество появлений",fontsize=16)
 ax.set_xlabel("Фонемы",fontsize=16)
 
@@ -126,12 +147,12 @@ print('Graphic of appearence count by frame was create in: %s'%(appearence_graph
 
 #Нарисуем график процента появлений от общего числа появлений по фонемам
 fig,ax = plt.subplots(figsize=figsize, dpi=dpi)
-ax.bar(phonemes, count_df['count_percent'], color=bars_col, width=.7)
+ax.bar(count_df['index'], count_df['count_percent'], color=bars_col, width=.5)
 for i, val in enumerate(count_df['count_percent']):
-    plt.text(i, val, val, horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':10})
+    plt.text(i, val, val, horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':8})
 
-ax.set_xticklabels(phonemes, rotation=60, horizontalalignment= 'right')
-ax.set_title("Распределение количества появлений в процентах по фонемам", fontsize=22)
+ax.set_xticklabels(count_df['index'], rotation=60, horizontalalignment= 'right')
+ax.set_title("Распределение количества появлений в процентах по фонемам", fontsize=18)
 ax.set_ylabel("Процент появления",fontsize=16)
 ax.set_xlabel("Фонемы",fontsize=16)
 

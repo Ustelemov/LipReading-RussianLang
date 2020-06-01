@@ -10,10 +10,9 @@
   - [get_info_from_youtube.py](scripts/get_info_from_youtube.py) - получения с Youtube-видео: русских суббтитров в txt формате (без знаков препинания, парсинг из srt),исходного видео в mp4, обрезанного видео (передаются секунды до и после) в mp4, дорожки обрезанного видео в wav
   - [get_maus_textgrid.py](scripts/get_maus_textgrid.py) - получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment
   - [create_words_phonemes_dict.py](scripts/create_words_phonemes_dict.py) - создание из словаря слов - словаря слово->фонемная транскрипция
-  - [ссылка](scripts/python get_phonemes_duration_stat.py) - получение статистики по длительности фонем в кадрах (в разрезе каждой фонемы и в целом): min,max,mean,std,sum,sum_percent
-  - [ссылка2](scripts/python get_phonemes_duration_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
+  - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистики по длительности фонем в кадрах (в разрезе каждой фонемы и в целом): min,max,mean,std,sum,sum_percent
   - [get_phonewords_frames.py](scripts/get_phonewords_frames.py) - получение файлов: русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
-  - [get_phonewords_frames.py](scripts/get_phonewords_frames.py) - получение файлов: русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
+  - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов

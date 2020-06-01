@@ -11,6 +11,8 @@
   - [get_maus_textgrid.py](scripts/get_maus_textgrid.py) - получение разметки аудиодорожки в формате textGrid при помощи MAUS-TextAlignment
   - [create_words_phonemes_dict.py](scripts/create_words_phonemes_dict.py) - создание из словаря слов - словаря слово->фонемная транскрипция
   - [get_phonewords_frames.py](scripts/get_phonewords_frames.py) - получение файлов: русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
+  - [get_phonemes_duration_stat.py](scripts/python get_phonemes_duration_stat.py) - получение статистики по длительности фонем в кадрах (в разрезе каждой фонемы и в целом): min,max,mean,std,sum,sum_percent
+  - [get_phonemes_appearence_stat.py](scripts/get_phonemes_appearence_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов

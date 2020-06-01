@@ -70,13 +70,14 @@ python get_phonewords_frames.py --p '/content/pedagog' --t '/content/out.TextGri
 - phonemeswords_frames.txt - фонемные транскрипции по кадрам
 - words_frames.txt - слова по кадрам
 
-## 7. Cкрипт для получения статистики о встречи фонем
+## Cкрипт для получения статистики о встречи фонем
 ```
 python get_phonemes_appearence_stat.py --p '/content/stat1' --d '/content/phonemes_keys.txt' --f '/content/phonemes_frames.txt'
 ```
 - --p - путь к выходной папке, в которую буду помещены файлы. Дефолтно: /default
 - --d - путь к словарю фонем с ключами {Обязательный аргумент}
 - --f - путь к файлу фонем по кадрам {Обязательный аргумент}
+- --e - требуется ли исключить фонемы (стандартно <:p>) из рассмотрения. Дефолтно: False
 
 Информация:
 - 1. Сколько раз фонема появлялась - график phonemes_appears_count.png с количество встреч каждой фонемы + расписанное в phonemes_appears_info.txt по каждой фонеме количество
@@ -85,6 +86,29 @@ python get_phonemes_appearence_stat.py --p '/content/stat1' --d '/content/phonem
 - 4. Максимальное количество появлений - max в phonemes_appears_info.txt
 - 5. Среднее количество появлений - mean в phonemes_appears_info.txt
  -6. Среднее квадратичное отклонение количества появлений - std в phonemes_appears_info.txt
+ 
+## Скрипт для получения статистики по длительности фонем в кадрах
+```
+python get_phonemes_duration_stat.py --p '/content/stat1' --d '/content/phonemes_keys.txt' --f '/content/phonemes_frames.txt'
+```
+- --p - путь к выходной папке, в которую буду помещены файлы. Дефолтно: /default
+- --d - путь к словарю фонем с ключами {Обязательный аргумент}
+- --f - путь к файлу фонем по кадрам {Обязательный аргумент}
+- --e - требуется ли исключить фонемы (стандартно <:p>) из рассмотрения. Дефолтно: False
+ 
+Информация
+- 1. Относительно каждой фонемы информация по длительности в кадрах:
+  - 1.1. Минимальная длительность в кадрах по каждой фонеме - min в phonemes_duration_stat.txt, график - min_duration_graph.png
+  - 1.2. Максимальная длительность в кадрах по каждой фонеме - max в phonemes_duration_stat.txt, график - max_duration_graph.png
+  - 1.3. Средняя длительность в кадрах по каждой фонеме - mean в phonemes_duration_stat.txt, график - mean_duration_graph.png
+  - 1.4. Отклонение длительности в кадрах по каждой фонеме - std в phonemes_duration_stat.txt, график - std_duration_graph.png
+  - 1.5. Сумма длительности в кадрах по каждой фонеме - sum в phonemes_duration_stat.txt, график - sum_duration_graph.png
+  - 1.6. Процент длительности фонемы в кадрах относительно всех кадров - sum_percent в phonemes_duration_stat.txt, график - sum_duration_percent_graph.png
+- 2. Общая статистика по всем фонемам:
+  - 2.1. Минимальная длительность в кадрах - min в phonemes_duration_stat.txt (блок общей статистики)
+  - 2.2. Максимальная длительность в кадрах - max в phonemes_duration_stat.txt (блок общей статистики)
+  - 2.3. Средняя длительность в кадрах - mean в phonemes_duration_stat.txt (блок общей статистики)
+  - 2.4. Отклонение длительности в кадрах - std в phonemes_duration_stat.txt (блок общей статистики
  
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~
@@ -113,6 +137,6 @@ python get_phonemes_appearence_stat.py --p '/content/stat1' --d '/content/phonem
      - 8.2.2. Максимальная длительность в кадрах
      - 8.2.3. Средняя длительность в кадрах
      - 8.2.4. Отклонение длительности в кадрах
-- [ ] 8. Придумать решение проблемы c фонемами а и о. Пример проблемы:
+- [ ] 9. Придумать решение проблемы c фонемами а и о. Пример проблемы:
   - аббатскому;a b b a t s k a m u
   - аббатскою;a b b a t s k o j u

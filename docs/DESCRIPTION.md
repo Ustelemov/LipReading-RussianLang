@@ -6,6 +6,8 @@
 - [praatIO](https://github.com/timmahrt/praatIO) - парсер TextGrid
   - [Документация с примерами](https://nbviewer.jupyter.org/github/timmahrt/praatIO/blob/master/tutorials/tutorial1_intro_to_praatio.ipynb#installing_praatio) 
 - [face-recognition](https://github.com/ageitgey/face_recognition) - Библиотека для распознавания лица + выделения ключевых точек
+  - [Пример как работать с cv2 и библиотекой](https://github.com/ageitgey/face_recognition/blob/master/examples/blur_faces_on_webcam.py)
+  - [Пример как работать с точками лица](https://github.com/ageitgey/face_recognition/blob/master/examples/digital_makeup.py)
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу
 ```

@@ -135,7 +135,6 @@ def get_aligned_lips(cv2_frame,margin=50,desiredLeftLip = (0.05,0.5),desiredLipW
   aligned_lips = []
 
   face_locations = get_lips_points(cv2_frame)
-  print(face_locations)
 
   #Параметры кадра
   height, width, channels = cv2_frame.shape

@@ -5,7 +5,7 @@
 - [pytube](https://github.com/nficano/pytube/tree/8c598376bb2432a5ff25ef2cd0ed1080236d5d62) - работа с ютуб видео (скачивание видео, скачивание суббтитров, получение мета-информации)
 - [praatIO](https://github.com/timmahrt/praatIO) - парсер TextGrid
   - [Документация с примерами](https://nbviewer.jupyter.org/github/timmahrt/praatIO/blob/master/tutorials/tutorial1_intro_to_praatio.ipynb#installing_praatio) 
-
+- [face-recognition](https://github.com/ageitgey/face_recognition) - Библиотека для распознавания лица + выделения ключевых точек
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу
 ```

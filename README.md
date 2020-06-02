@@ -14,6 +14,7 @@
   - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистики по длительности фонем в кадрах (в разрезе каждой фонемы и в целом): min,max,mean,std,sum,sum_percent
   - [get_phonewords_frames.py](scripts/get_phonewords_frames.py) - получение файлов: русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
   - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
+  - [work_with_frames_funcs.py](scripts/work_with_frames_funcs.py) - библиотека с функциями по работе с кадрами
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов

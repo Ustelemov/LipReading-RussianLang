@@ -1,7 +1,7 @@
 ## Структура проекта
 - [README.md](README.md) - Описание репозитория
 - [requirements.txt](requirements.txt) - Список зависимостей
-- [DejaVuSans.ttf](DejaVuSans.ttf) - Шрифт, нужен чтобы писать русским текстом на кадрах
+- [DejaVuSans.ttf](DejaVuSans.ttf) - Шрифт DejaVuSans (нужен чтобы писать русским текстом на кадрах)
 - [Документация](docs/)
   - [FORMALIZATION.MD](docs/FORMALIZATION.md) - формальное описание работы: проблематика, цели, задачи, развитие и пр.
   - [DESCRIPTION.MD](docs/DESCRIPTION.md) - комментарии, описание, полезные ссылки

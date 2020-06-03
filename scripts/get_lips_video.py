@@ -15,7 +15,7 @@ def silentremove(filename):
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Create lip video from face video file')
 parser.add_argument('--i', dest="input_video",type=str,required=True,help='Path to video to take lips from')
-parser.add_argument('--f',dest="outfile_name",type=str,required=True,help="Output file path")
+parser.add_argument('--o',dest="outfile_name",type=str,required=True,help="Output file path")
 parser.add_argument('--w',dest='width',type=int,default=320,help='Width of output video')
 parser.add_argument('--h',dest='height',type=int,default=240,help='Height of output video')
 

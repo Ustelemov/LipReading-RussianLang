@@ -16,6 +16,7 @@
   - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
   - [work_with_frames_funcs.py](scripts/work_with_frames_funcs.py) - библиотека с функциями по работе с кадрами
   - [get_lips_video.py](scripts/get_lips_video.py) - получение видео губ из видео с лицом
+  - [label_frames.py](scripts/label_frames.py) - добавление на видео текста из файла текста по фонемам
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов
@@ -123,13 +124,16 @@ python get_lips_video.py --i '/content/pedagog/video.mp4' --f '/content/i/123.mp
 - --f - путь для выходного файла {Обязательный аргумент}
 - --w - ширина выходного файла (и соотвественно ширина файлов губ). Дефолтно: 320
 - --h - высота выходного файла (и соответственно высота файлов губ). Дефолтно: 240
-## Добавление аудиодорожки к файлу
+## Добавление аудиодорожки к видеофайлу
+Для добавление аудиодорожи видео к файлу можно воспользоваться библиотекой ffmpeg
 ```
 ffmpeg -i '/content/out.mp4' -i '/content/pedagog/audio.wav' '/content/outout.avi'
 ```
 - первый -i параметр (/content/out.mp4) - путь к .mp4 видео-файлу
 - второй -i параметр (/content/pedagog/audio.wav) - путь к .wav аудио-файлу
 - /content/outout.avi - путь к .avi выходном файлу
+
+
 
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~

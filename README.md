@@ -118,10 +118,10 @@ python get_phonemes_duration_stat.py --p '/content/stat1' --d '/content/phonemes
   
 ## Получение видео губ
 ```
-python get_lips_video.py --i '/content/pedagog/video.mp4' --f '/content/i/123.mp4'
+python get_lips_video.py --i '/content/pedagog/video.mp4' --o '/content/i/123.mp4'
 ```
 - --i - путь к входному видео-файлу с говорящим лицом, с которого будем получать губы {Обязательный аргумент}
-- --f - путь для выходного файла {Обязательный аргумент}
+- --o - путь для выходного файла {Обязательный аргумент}
 - --w - ширина выходного файла (и соотвественно ширина файлов губ). Дефолтно: 320
 - --h - высота выходного файла (и соответственно высота файлов губ). Дефолтно: 240
 ## Добавление аудиодорожки к видеофайлу
@@ -133,7 +133,15 @@ ffmpeg -i '/content/out.mp4' -i '/content/pedagog/audio.wav' '/content/outout.av
 - второй -i параметр (/content/pedagog/audio.wav) - путь к .wav аудио-файлу
 - /content/outout.avi - путь к .avi выходном файлу
 
-
+## Добавление текста на видео
+Текст добавляется по кадрово из файла, где каждая строчка - текст на кадр. Требуется равное количеству кадрам количество строчек в файле
+```
+python label_frames.py --i '/content/pedagog/video.mp4' --o '/content/out123.mp4' --f '/content/LiReading-RussianLang/DejaVuSans.ttf' --t '/content/pedagog/frames_align/words_frames.txt'
+```
+- --i - путь к входному видео-файлу, на кадры которого будет добавлен текст
+- --o - путь для выходного файла {Обязательный аргумент}
+- --f - путь к ttf файлу шрифта (для того, чтобы писать русскими буквами используется DejaVuSans.tff)
+- --t - путь к текстовому файлу текста по кадрам
 
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~

@@ -106,7 +106,7 @@ def get_aligned_faces(cv2_frame,margin=10,desiredLeftEye = (0.35,0.35),desiredFa
   return aligned_faces
 
 def draw_point(cv2_frame,point):
-  cv2.circle(cv2_frame, point, 4, (255, 255, 255), -1)  
+  cv2.circle(cv2_frame, point, 1, (255, 255, 255), -1)  
 
 def draw_points(cv2_frame,points):
 	for (x, y) in points:

@@ -6,7 +6,10 @@
 ## В работе использованы
 - [Функция silentremove](https://stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist) - удаление файла, если он существует
 - [Moviepy](https://github.com/Zulko/moviepy) - нарезка видео
-- [ffmpeg](https://github.com/kkroening/ffmpeg-python) - для извлечения аудио
+- [ffmpeg](https://github.com/kkroening/ffmpeg-python) - для извлечения аудио, скелейки аудио с видео и пр.
+  - [19 команд ffmpeg для любых нужд](https://habr.com/ru/post/171213/)
+  - [Пример обрезки видео](https://trac.ffmpeg.org/wiki/Seeking#Cuttingsmallsections)
+  - [Черный экран при обрезке видео](https://video.stackexchange.com/questions/18284/cutting-with-ffmpeg-results-in-few-seconds-of-black-screen-how-do-i-fix-this)
 - [pytube](https://github.com/nficano/pytube/tree/8c598376bb2432a5ff25ef2cd0ed1080236d5d62) - работа с ютуб видео (скачивание видео, скачивание суббтитров, получение мета-информации)
 - [praatIO](https://github.com/timmahrt/praatIO) - парсер TextGrid
   - [Документация с примерами](https://nbviewer.jupyter.org/github/timmahrt/praatIO/blob/master/tutorials/tutorial1_intro_to_praatio.ipynb#installing_praatio) 

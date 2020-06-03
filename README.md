@@ -124,7 +124,7 @@ python get_lips_video.py --i '/content/pedagog/video.mp4' --f '/content/i/123.mp
 - --h - высота выходного файла (и соответственно высота файлов губ). Дефолтно: 240
 ## Добавление аудиодорожки к файлу
 ```
-ffmpeg -i /content/out.mp4 -i /content/pedagog/audio.wav /content/outout.avi
+ffmpeg -i '/content/out.mp4' -i '/content/pedagog/audio.wav' '/content/outout.avi'
 ```
 - первый -i параметр (/content/out.mp4) - путь к .mp4 видео-файлу
 - второй -i параметр (/content/pedagog/audio.wav) - путь к .wav аудио-файлу

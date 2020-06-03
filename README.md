@@ -17,6 +17,8 @@
   - [work_with_frames_funcs.py](scripts/work_with_frames_funcs.py) - библиотека с функциями по работе с кадрами
   - [get_lips_video.py](scripts/get_lips_video.py) - получение видео губ из видео с лицом
   - [label_frames.py](scripts/label_frames.py) - добавление на видео текста из файла текста по фонемам
+  - [create_json_dataset.py](scripts/create_json_dataset.py) - создание JSON-датасета (фонема, номер кадра, массив точек губ)
+  - [create_image_dataset.py](scripts/create_image_dataset.py) - создание набора изображений губ с ключем фонем\фонемой в названии файла
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов
@@ -145,13 +147,21 @@ python label_frames.py --i '/content/pedagog/video.mp4' --o '/content/out123.mp4
 
 ## Создание датасета губ (изображение + фонем\ключ фонемы в названии)
 ```
-python create_image_phonemekey_dataset.py --i '/content/pedagog/video.mp4' --p '/content/dataset1' --k '/content/pedagog/frames_align/phonemes_frames.txt' --w 240 --h 240
+python create_image_dataset.py --i '/content/pedagog/video.mp4' --p '/content/dataset1' --k '/content/pedagog/frames_align/phonemes_frames.txt' --w 240 --h 240
 ```
 - --i - путь к входному видео-файлу, с которого будут брать изображения губ {Обязательный аргумент}
 - --o - путь для папки, куда буду добавлены изображеня {Обязательный аргумент}
 - --k - путь к файлу фонем\ключей фонем (с него буду браться названия для файлов) {Обязательный аргумент}
 - --w - ширина выходного изображения. Дефолтно: 320
 - --h - высота выходного изображения Дефолтно: 240
+
+## Создание JSON датасета (фонема, номер кадра, массив точек губ)
+```
+python get_json_dataset.py --i '/content/pedagog/video.mp4' --o '/content/pedagog/dataset.json' --k '/content/pedagog/frames_align/phonemes_frames.txt'
+```
+- --i - путь к входному видео-файлу, с которого будут получены точки губ {Обязательный аргумент}
+- --o - путь к выходному JSON-файлу {Обязательный аргумент}
+- --k - путь к файлу фонем по кадрам {Обязательный аргумент}
 
 ## Todo-лист
 - [X] 1. ~~Создать файл с зависимостями - requirements.txt~~

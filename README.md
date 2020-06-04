@@ -26,7 +26,7 @@
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов
   - [phonemes_keys.txt](dicts/phonemes_keys.txt) - словарь фонем с ключами
 - [Датасеты](dataset/)
- - [Папка Recommendation](dataset/recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU с 15 секунды по 198 секунду 
+  - [Папка Recommendation](dataset/recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU с 15 секунды по 198 секунду 
 ## Использование
 ## Ссылка на Notebook (GoogleColaboratory) для обработки Youtube-видео
 ```

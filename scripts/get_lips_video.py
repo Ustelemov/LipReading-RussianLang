@@ -71,8 +71,6 @@ while(True):
     print('Proccesed %d of %d frames'%(count,frames_count))
     print('Time from start in sec: %d'%(int(time.time()-start)))
     print('Time per frame: %f'%(round((time.time()-start)/count,2)))
-  if count==200:
-    break
   if ret == True:
     count = count+1
     

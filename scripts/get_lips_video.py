@@ -58,6 +58,7 @@ while(True):
     print('Proccesing %d of %d frames'%(count,frames_count))
   if ret == True:
     count = count+1
+    res_frame = cv2.resize(frame,(640,480))
     frames = get_aligned_lips(frame,desiredLipWidth=width,desiredLipHeight=height)
     #Берем только первый кадр (считаем, что там одни губы пока всегда)
     #Если нет губ - пропускаем кадр

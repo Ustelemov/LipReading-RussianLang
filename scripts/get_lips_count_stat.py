@@ -45,9 +45,13 @@ json = json.load(open(json_path))
 #Создадим словарь: <фонема, список массивов точек губ>
 dict = {}
 
+#Подсчитаем количество не None
+count_lips = 0
+
 for f in json:
   #В JSON-None означается, что для кадра (фонемы) не было найден губ
   if f['lips_points']!=None:
+    count_lips = count_lips+1
     phoneme = f['phoneme']
     lip_points = f['lips_points']['bottom_lip']+f['lips_points']['top_lip']
     if phoneme not in dict.keys():
@@ -75,7 +79,7 @@ for i, val in enumerate(count_df['count']):
     plt.text(i, val, int(val), horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':8})
 
 ax.set_xticklabels(count_df['index'], rotation=60, horizontalalignment= 'right')
-ax.set_title("Распределение количества массивов точек губ по фонемам", fontsize=18)
+ax.set_title("Распределение количества массивов точек губ по фонемам (всего %d массивов)"%(count_lips), fontsize=18)
 ax.set_ylabel("Количество массивов точек",fontsize=16)
 ax.set_xlabel("Фонемы",fontsize=16)
 

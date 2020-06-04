@@ -62,7 +62,7 @@ count = 0
 while(True):
 #считывает кадры последовательно, если ret - true - кадр считался верно, если false - будем прекращать считывание
   ret, frame = cap.read()
-  if count%100==0:
+  if count%100==0 and count>0:
     print('Proccesed %d of %d frames'%(count,frames_count))
     print('Time from start in sec: %d'%(int(time.time()-start)))
     print('Time per frame: %f'%(round((time.time()-start)/count,2)))

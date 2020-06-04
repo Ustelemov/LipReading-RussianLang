@@ -18,6 +18,8 @@ parser.add_argument('--i', dest="input_video",type=str,required=True,help='Path 
 parser.add_argument('--o',dest="outfile_name",type=str,required=True,help="Output file path")
 parser.add_argument('--t',dest='textfile_name',type=str,required=True,help='Path to text-by-frame file')
 parser.add_argument('--f',dest='font_path',type=str,required=True,help='Path to DejaVuSans font to write on russian')
+parser.add_argument('--a',dest='allow_dont_compare',type=bool,default=False,help='If True - dont compare count of frame and length of text by frame files')
+
 
 font_size = 24 #Размер щрифта
 color = (255,255,255,0) #цвет шрифта
@@ -30,6 +32,7 @@ videofile_path = args.input_video
 outfile_name = args.outfile_name
 textfile_name = args.textfile_name
 font_path = args.font_path
+allow_dont_compare = args.allow_dont_compare
 
 output_path = outfile_name.replace(outfile_name.split('/')[-1],'') #Уберем название файла из пути
 
@@ -58,7 +61,7 @@ if (cap.isOpened()== False):
   sys.exit('Error while openning video file, maybe file doesnt exist')
 
 
-if(len(textFrames)!=frames_count):
+if(not allow_dont_compare and len(textFrames)!=frames_count):
   sys.exit('Lenght of text-frame file not equal to frames count in video')
 
 print('Processing is running') 

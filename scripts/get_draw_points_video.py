@@ -20,6 +20,8 @@ parser = argparse.ArgumentParser(usage='Create lip video from face video file')
 parser.add_argument('--i', dest="input_video",type=str,required=True,help='Path to video to take lips from')
 parser.add_argument('--o',dest="outfile_name",type=str,required=True,help="Output file path")
 parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
+parser.add_argument('--d',dest="depress_video",type=bool,default=False,help="Need to depress resolution or not. True - need")
+
 
 args = parser.parse_args()
 
@@ -27,6 +29,9 @@ args = parser.parse_args()
 videofile_path = args.input_video
 outfile_name = args.outfile_name
 count_border = args.count_border
+depress_video = args.depress_video
+
+
 
 output_path = outfile_name.replace(outfile_name.split('/')[-1],'') #Уберем название файла из пути
 
@@ -45,6 +50,9 @@ fps = cap.get(cv2.CAP_PROP_FPS)
 width  = int(cap.get(3))
 height = int(cap.get(4)) 
 
+if depress_video:
+  width = 854
+  height = 480
 
 if (cap.isOpened()== False): 
  sys.exit('Error while openning video file, maybe file doesnt exist')
@@ -69,9 +77,15 @@ while(True):
     break
   if ret == True:
     count = count+1
+
+    if depress_video:
+      res_frame = cv2.resize(frame,(width,height))
+    else:
+      res_frame = frame
+
     #Если губы есть, то нарисуем точки, если нет - просто запишем кадр
-    draw_lips_points(frame)
-    writer.write(frame)
+    draw_lips_points(res_frame)
+    writer.write(res_frame)
   else:
     break
     

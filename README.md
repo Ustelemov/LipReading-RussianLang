@@ -212,7 +212,7 @@ python create_json_dataset.py \
 
 ## Отрисовка точек губ на видео
 ```
-!python get_draw_points_video.py \
+python get_draw_points_video.py \
 --i '/content/outfolder/video.mp4' \
 --o '/content/outfolder/lip_points_on.mp4' \
 --c 200 \
@@ -225,7 +225,7 @@ python create_json_dataset.py \
 
 ## Получение статистики по количеству массивов точек губ (количеству распознаных кадров) по фонемам из JSON файла
 ```
-!python get_lips_count_stat.py \
+python get_lips_count_stat.py \
 --i '/content/outfolder/text.json' \
 --o '/content/outfolder/json_stat'
 ```

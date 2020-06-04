@@ -12,6 +12,7 @@ parser.add_argument('--k',dest='phonemekeys_file_name',type=str,required=True,he
 parser.add_argument('--w',dest="lip_width",type=int,default=320,help="Width of output lip picture")
 parser.add_argument('--h',dest="lip_height",type=int,default=240,help="Height of output lip picture")
 parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
+parser.add_argument('--d',dest="depress_video",type=bool,default=False,help="Need to depress resolution or not. True - need")
 
 
 args = parser.parse_args()
@@ -23,7 +24,7 @@ output_path = args.output_path
 lip_width = args.lip_width
 lip_height = args.lip_height
 count_border = args.count_border
-
+depress_video = args.depress_video
 
 #проверяем, есть ли папка - в которую хотим класть выходной файл - создаем, если нет
 output_path_exists = os.path.exists(output_path)
@@ -55,7 +56,13 @@ while(True):
   if count%100==0:
     print('Proccesing %d of %d frames'%(count,frames_count))
   if ret == True:
-    lips = get_aligned_lips(frame,desiredLipWidth=lip_width,desiredLipHeight=lip_height)
+    
+    if depress_video:
+      res_frame = cv2.resize(frame,(width,height))
+    else:
+      res_frame = frame
+    
+    lips = get_aligned_lips(res_frame,desiredLipWidth=lip_width,desiredLipHeight=lip_height)
     #Считаем что губы всегда максимум одни
     if len(lips)>0:
       #В названии файла зашьем номер фонем до _. После _ добавим номер кадра, чтобы избежать 

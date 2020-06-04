@@ -64,7 +64,7 @@ while(True):
   if ret == True:
     
     if depress_video:
-      res_frame = cv2.resize(frame,(width,height))
+      res_frame = cv2.resize(frame,(depress_width,depress_height))
     else:
       res_frame = frame
 

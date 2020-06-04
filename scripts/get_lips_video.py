@@ -19,7 +19,7 @@ parser.add_argument('--i', dest="input_video",type=str,required=True,help='Path 
 parser.add_argument('--o',dest="outfile_name",type=str,required=True,help="Output file path")
 parser.add_argument('--w',dest='width',type=int,default=320,help='Width of output video')
 parser.add_argument('--h',dest='height',type=int,default=240,help='Height of output video')
-
+parser.add_argument('--с',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
 
 args = parser.parse_args()
 
@@ -28,6 +28,7 @@ videofile_path = args.input_video
 outfile_name = args.outfile_name
 width = args.width
 height = args.height
+count_border = args.count_border
 
 output_path = outfile_name.replace(outfile_name.split('/')[-1],'') #Уберем название файла из пути
 
@@ -78,6 +79,11 @@ while(True):
       writer.write(np.zeros((height,width,3), np.uint8))
   else:
     break
+    
+  #Проверяем границу по кадрам, если нужно - выходим
+  if border_count>0 and count>=border_count:
+    break
+    
 cap.release()
 writer.release()
 

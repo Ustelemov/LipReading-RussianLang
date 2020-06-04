@@ -92,6 +92,6 @@ while(True):
   else:
     break
 cap.release()
-json.dump(result, open("text.json",'w'))
+json.dump(result, open(output_file,'w'))
 print('Proccesed frames: %d. With none_lips: %d'%(count,none_count))
 print('Processing is ended')

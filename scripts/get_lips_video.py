@@ -20,6 +20,8 @@ parser.add_argument('--o',dest="outfile_name",type=str,required=True,help="Outpu
 parser.add_argument('--w',dest='width',type=int,default=320,help='Width of output video')
 parser.add_argument('--h',dest='height',type=int,default=240,help='Height of output video')
 parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
+parser.add_argument('--d',dest="depress_video",type=bool,default=False,help="Need to depress resolution or not. True - need")
+
 
 args = parser.parse_args()
 
@@ -29,6 +31,10 @@ outfile_name = args.outfile_name
 width = args.width
 height = args.height
 count_border = args.count_border
+depress_video = args.depress_video
+
+depress_width = 854
+depress_height = 480
 
 output_path = outfile_name.replace(outfile_name.split('/')[-1],'') #Уберем название файла из пути
 
@@ -68,7 +74,12 @@ while(True):
     break
   if ret == True:
     count = count+1
-    res_frame = cv2.resize(frame,(640,480))
+    
+    if depress_video:
+      res_frame = cv2.resize(frame,(depress_width,depress_height))
+    else:
+      res_frame = frame
+    
     frames = get_aligned_lips(res_frame,desiredLipWidth=width,desiredLipHeight=height)
     #Берем только первый кадр (считаем, что там одни губы пока всегда)
     #Если нет губ - надо пропускать кадр, НО

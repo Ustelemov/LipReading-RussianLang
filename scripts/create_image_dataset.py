@@ -11,7 +11,7 @@ parser.add_argument('--p',dest="output_path",type=str,required=True,help="Output
 parser.add_argument('--k',dest='phonemekeys_file_name',type=str,required=True,help='Path to phonemkeys by frame file')
 parser.add_argument('--w',dest="lip_width",type=int,default=320,help="Width of output lip picture")
 parser.add_argument('--h',dest="lip_height",type=int,default=240,help="Height of output lip picture")
-parser.add_argument('--с',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
+parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
 
 
 args = parser.parse_args()

@@ -36,7 +36,11 @@ pip install -r requirements.txt
 ```
 ### Получение информации с Youtube-видео
 ```
-python get_info_from_youtube.py --u 'https://www.youtube.com/watch?v=vyhzVJBln6k' --p '/content/pedagog' --s 0 --e 68
+python get_info_from_youtube.py \
+--u 'https://www.youtube.com/watch?v=bYMnnpJdNiU&t' \
+--p '/content/outfolder' \
+--s 0 \
+--e 197
 ```
 - --u - ссылка на видео {Обязательный аргумент}
 - --p - путь к папке, в которую будет помещен файлы.txt. Дефолтно: /default

@@ -11,6 +11,7 @@ parser = argparse.ArgumentParser(usage='Create JSON-dataset phoneneme+lip point'
 parser.add_argument('--i', dest="input_video",type=str,required=True,help='Path to source video')
 parser.add_argument('--o',dest="output_file",type=str,required=True,help="Path to output fie")
 parser.add_argument('--k',dest='phoneme_file_name',type=str,required=True,help='Path to phoneme by frame file')
+parser.add_argument('--d',dest="depress_video",type=bool,default=False,help="Need to depress resolution or not. True - need")
 
 
 
@@ -20,6 +21,11 @@ args = parser.parse_args()
 videofile_path = args.input_video
 phoneme_file_name = args.phoneme_file_name
 output_file = args.output_file
+depress_video = args.depress_video
+
+depress_width = 854
+depress_height = 640
+
 
 output_path = output_file.replace(output_file.split('/')[-1],'') #Уберем название файла из пути
 
@@ -47,6 +53,7 @@ if(len(phonemeFrames)!=frames_count):
 print('Processing is running') 
 
 result = []
+none_count
 
 count = 0
 while(True):
@@ -55,10 +62,22 @@ while(True):
   if count%100==0:
     print('Proccesing %d of %d frames'%(count,frames_count))
   if ret == True:
-       
-    lips_points = get_lips_points(frame)
+    
+    if depress_video:
+      res_frame = cv2.resize(frame,(width,height))
+    else:
+      res_frame = frame
+
+    lips_points = get_lips_points(res_frame)
     #Считаем что губы всегда максимум одни
-    lips_points = lips_points[0] if len(lips_points)>0 else None
+    #lips_points = lips_points[0] if len(lips_points)>0 else None
+    if len(lips_points)>0:
+      lips_points = lips_points[0]
+    else:
+      lips_points = None
+      none_count = none_count+1      
+
+    
     phoneme = phonemeFrames[count]
     
     result.append({'phoneme':phoneme,'frame_num':count,'lips_points':lips_points})
@@ -69,4 +88,5 @@ while(True):
     break
 cap.release()
 json.dump(result, open("text.json",'w'))
+print('Proccesed frames: %d. With none_lips: %d'%(count,none_count))
 print('Processing is ended')

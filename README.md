@@ -139,7 +139,11 @@ python get_phonemes_duration_stat.py \
   
 ## Получение видео губ
 ```
-python get_lips_video.py --i '/content/pedagog/video.mp4' --o '/content/i/123.mp4'
+python get_lips_video.py \
+--i '/content/outfolder/video.mp4' \
+--o '/content/outfolder/lips_only_depressed_200f.mp4' \
+--d True \
+--c 200
 ```
 - --i - путь к входному видео-файлу с говорящим лицом, с которого будем получать губы {Обязательный аргумент}
 - --o - путь для выходного файла {Обязательный аргумент}
@@ -160,16 +164,29 @@ ffmpeg -i '/content/out.mp4' -i '/content/pedagog/audio.wav' '/content/outout.av
 ## Добавление текста на видео
 Текст добавляется по кадрово из файла, где каждая строчка - текст на кадр. Требуется равное количеству кадрам количество строчек в файле
 ```
-python label_frames.py --i '/content/pedagog/video.mp4' --o '/content/out123.mp4' --f '/content/LiReading-RussianLang/DejaVuSans.ttf' --t '/content/pedagog/frames_align/words_frames.txt'
+python label_frames.py \
+--i '/content/outfolder/lips_only_depressed_200f.mp4' \
+--o '/content/outfolder/lips_phonemed_depressed_200f.mp4' \
+--f '/content/LiReading-RussianLang/DejaVuSans.ttf' \
+--t '/content/outfolder/frames_align/phonemes_frames.txt' \
+--a True
 ```
 - --i - путь к входному видео-файлу, на кадры которого будет добавлен текст
 - --o - путь для выходного файла {Обязательный аргумент}
 - --f - путь к ttf файлу шрифта (для того, чтобы писать русскими буквами используется DejaVuSans.tff)
 - --t - путь к текстовому файлу текста по кадрам
+- --a - разрешено ли разное количество кадров в видео и в тексте по кадрам (если разное, в видео меньше - из текстового файла будут брать соответствующее первое количество записей
 
 ## Создание датасета губ (изображение + фонем\ключ фонемы в названии)
 ```
-python create_image_dataset.py --i '/content/pedagog/video.mp4' --p '/content/dataset1' --k '/content/pedagog/frames_align/phonemes_frames.txt' --w 240 --h 240
+python create_image_dataset.py \
+--i '/content/outfolder/video.mp4' \
+--p '/content/outfolder/image_dataset' \
+--k '/content/outfolder/frames_align/phonemes_frames.txt' \
+--w 240 \
+--h 240 \
+--c 200 \
+--d True
 ```
 - --i - путь к входному видео-файлу, с которого будут брать изображения губ {Обязательный аргумент}
 - --o - путь для папки, куда буду добавлены изображеня {Обязательный аргумент}

@@ -53,7 +53,7 @@ if(len(phonemeFrames)!=frames_count):
 print('Processing is running') 
 
 result = []
-none_count
+none_count = 0
 
 count = 0
 while(True):

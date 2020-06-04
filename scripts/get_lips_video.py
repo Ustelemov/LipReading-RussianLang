@@ -1,8 +1,9 @@
-from work_with_frames_funcs import get_aligned_lips
 import sys
 import cv2
 import argparse
 import os
+import time
+import numpy as np
 
 #Функция удаление файла,если он существует. Нужно для видео и аудиофайлов, чтобы можно было записать.
 def silentremove(filename):
@@ -51,19 +52,30 @@ print('Processing is running')
 fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 writer = cv2.VideoWriter(outfile_name, fourcc, fps, (width,height))
 count = 0
+
+#Запустим таймер
+start = time.time()
+
 while(True):
 #считывает кадры последовательно, если ret - true - кадр считался верно, если false - будем прекращать считывание
   ret, frame = cap.read()
-  if count%100==0:
-    print('Proccesing %d of %d frames'%(count,frames_count))
+  if count%100==0 and count>0:
+    print('Proccesed %d of %d frames'%(count,frames_count))
+    print('Time from start in sec: %d'%(int(time.time()-start)))
+    print('Time per frame: %f'%(round((time.time()-start)/count,2)))
+  if count==200:
+    break
   if ret == True:
     count = count+1
     res_frame = cv2.resize(frame,(640,480))
-    frames = get_aligned_lips(frame,desiredLipWidth=width,desiredLipHeight=height)
+    frames = get_aligned_lips(res_frame,desiredLipWidth=width,desiredLipHeight=height)
     #Берем только первый кадр (считаем, что там одни губы пока всегда)
-    #Если нет губ - пропускаем кадр
+    #Если нет губ - надо пропускать кадр, НО
+    #Пока сделаем черный экран, чтобы соотвествие между файлом текста по кадрам было
     if len(frames)>0: 
       writer.write(frames[0])
+    else: #Запишем пустой кадр
+      writer.write(np.zeros((height,width,3), np.uint8))
   else:
     break
 cap.release()

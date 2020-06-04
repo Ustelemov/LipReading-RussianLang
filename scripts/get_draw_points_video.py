@@ -31,7 +31,8 @@ outfile_name = args.outfile_name
 count_border = args.count_border
 depress_video = args.depress_video
 
-
+depress_width = 854
+depress_height = 480
 
 output_path = outfile_name.replace(outfile_name.split('/')[-1],'') #Уберем название файла из пути
 
@@ -51,8 +52,8 @@ width  = int(cap.get(3))
 height = int(cap.get(4)) 
 
 if depress_video:
-  width = 854
-  height = 480
+  width = depress_width
+  height = depress_height
 
 if (cap.isOpened()== False): 
  sys.exit('Error while openning video file, maybe file doesnt exist')

@@ -4,7 +4,7 @@ import cv2
 import argparse
 import os
 import json
-
+import time
 
 #Конфигурация параметров при вызове с консоли
 parser = argparse.ArgumentParser(usage='Create JSON-dataset phoneneme+lip point')
@@ -50,6 +50,9 @@ if (cap.isOpened()== False):
 if(len(phonemeFrames)!=frames_count):
   sys.exit('Lenght of phoneme-by-frame file not equal to frames count in video')
 
+#Запустим таймер
+start = time.time()
+
 print('Processing is running') 
 
 result = []
@@ -60,7 +63,9 @@ while(True):
 #считывает кадры последовательно, если ret - true - кадр считался верно, если false - будем прекращать считывание
   ret, frame = cap.read()
   if count%100==0:
-    print('Proccesing %d of %d frames'%(count,frames_count))
+    print('Proccesed %d of %d frames'%(count,frames_count))
+    print('Time from start in sec: %d'%(int(time.time()-start)))
+    print('Time per frame: %f'%(round((time.time()-start)/count,2)))
   if ret == True:
     
     if depress_video:

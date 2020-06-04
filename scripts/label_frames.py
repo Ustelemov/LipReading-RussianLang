@@ -21,7 +21,7 @@ parser.add_argument('--f',dest='font_path',type=str,required=True,help='Path to 
 parser.add_argument('--a',dest='allow_dont_compare',type=bool,default=False,help='If True - dont compare count of frame and length of text by frame files')
 
 
-font_size = 24 #Размер щрифта
+font_size = 42 #Размер щрифта
 color = (255,255,255,0) #цвет шрифта
 point = (10,10) #Точка на кадре в которой писать текст
 

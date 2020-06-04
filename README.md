@@ -19,7 +19,8 @@
   - [label_frames.py](scripts/label_frames.py) - добавление на видео текста из файла текста по фонемам
   - [create_json_dataset.py](scripts/create_json_dataset.py) - создание JSON-датасета (фонема, номер кадра, массив точек губ)
   - [create_image_dataset.py](scripts/create_image_dataset.py) - создание набора изображений губ с ключем фонем\фонемой в названии файла
-  - [get_draw_points_video.py](scripts/get_draw_points_video.py) - скрипт, рисующий на видео точки губ
+  - [get_draw_points_video.py](scripts/get_draw_points_video.py) - отрисовка точек губ на видео
+  - [get_lips_count_stat.py](scripts/get_lips_count_stat.py) - получение статистики по количеству массивов точек губ (количеству кадров, на которые были распознаны губы) по фонемам 
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов

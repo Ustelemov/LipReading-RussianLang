@@ -15,7 +15,7 @@
   - [get_phonewords_frames.py](scripts/get_phonewords_frames.py) - получение файлов: русских слов по кадрам (из транскрипции), фонем по кадрам (самих фонем и ключей из словаря - нужно для классификатор в дальнейшем), фонемных транскрипций по кадрам
   - [get_phonemes_duration_stat.py](scripts/get_phonemes_duration_stat.py) - получение статистике по количеству встреч фонем: сколько раз использовалась фонема, независимо от длины в кадрах
   - [work_with_frames_funcs.py](scripts/work_with_frames_funcs.py) - библиотека с функциями по работе с кадрами
-  - [get_lips_video.py](scripts/get_lips_video.py) - получение видео губ из видео с лицом
+  - [get_lips_video.py](scripts/get_lips_video.py) - получение видео губ из видео с лицом. ! Сейчас добавляется пустой кадр, если губ нет !
   - [label_frames.py](scripts/label_frames.py) - добавление на видео текста из файла текста по фонемам
   - [create_json_dataset.py](scripts/create_json_dataset.py) - создание JSON-датасета (фонема, номер кадра, массив точек губ)
   - [create_image_dataset.py](scripts/create_image_dataset.py) - создание набора изображений губ с ключем фонем\фонемой в названии файла

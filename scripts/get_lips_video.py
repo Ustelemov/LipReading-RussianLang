@@ -1,3 +1,4 @@
+from work_with_frames_funcs import get_aligned_lips
 import sys
 import cv2
 import argparse

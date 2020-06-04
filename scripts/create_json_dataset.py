@@ -55,6 +55,7 @@ while(True):
   if count%100==0:
     print('Proccesing %d of %d frames'%(count,frames_count))
   if ret == True:
+       
     lips_points = get_lips_points(frame)
     #Считаем что губы всегда максимум одни
     lips_points = lips_points[0] if len(lips_points)>0 else None

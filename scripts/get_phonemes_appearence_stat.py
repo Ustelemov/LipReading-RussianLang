@@ -149,10 +149,10 @@ print('Graphic of appearence count by frame was create in: %s'%(appearence_graph
 fig,ax = plt.subplots(figsize=figsize, dpi=dpi)
 ax.bar(count_df['index'], count_df['count_percent'], color=bars_col, width=.5)
 for i, val in enumerate(count_df['count_percent']):
-    plt.text(i, val, val, horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':8})
+    plt.text(i, val, val, horizontalalignment='center', verticalalignment='bottom', fontdict={'fontweight':500, 'size':6})
 
 ax.set_xticklabels(count_df['index'], rotation=60, horizontalalignment= 'right')
-ax.set_title("Распределение количества появлений в процентах по фонемам (из %d кадров)"%(count_frames), fontsize=18)
+ax.set_title("Распределение количества появлений в процентах по фонемам (из %d фонем)"%(count_frames), fontsize=18)
 ax.set_ylabel("Процент появления",fontsize=16)
 ax.set_xlabel("Фонемы",fontsize=16)
 

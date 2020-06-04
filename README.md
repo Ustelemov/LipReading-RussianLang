@@ -198,7 +198,11 @@ python create_image_dataset.py \
 
 ## Создание JSON датасета (фонема, номер кадра, массив точек губ)
 ```
-python get_json_dataset.py --i '/content/pedagog/video.mp4' --o '/content/pedagog/dataset.json' --k '/content/pedagog/frames_align/phonemes_frames.txt'
+python create_json_dataset.py \
+--i '/content/outfolder/video.mp4' \
+--o '/content/outfolder/json.json' \
+--k '/content/outfolder/frames_align/phonemes_frames.txt' \
+--d True
 ```
 - --i - путь к входному видео-файлу, с которого будут получены точки губ {Обязательный аргумент}
 - --o - путь к выходному JSON-файлу {Обязательный аргумент}
@@ -207,7 +211,11 @@ python get_json_dataset.py --i '/content/pedagog/video.mp4' --o '/content/pedago
 
 ## Нарисовать точки губ на видео
 ```
-python get_draw_points_video.py --i '/content/pedagog/video.mp4' --o '/content/i/123.mp4' --c 200
+!python get_draw_points_video.py \
+--i '/content/outfolder/video.mp4' \
+--o '/content/outfolder/lip_points_on.mp4' \
+--c 200 \
+--d True
 ```
 - --i - путь к входному видео-файлу, с которого будут получены точки губ {Обязательный аргумент}
 - --o - путь к выходному файлу {Обязательный аргумент}
@@ -247,6 +255,7 @@ python get_draw_points_video.py --i '/content/pedagog/video.mp4' --o '/content/i
 - [X] 12. ~~Создать скрипт для создания датасета: изображение губ + номер фонемы в названии~~
 - [X] 13. ~~Создать скрипт для создания JSON датасета с координатам губ по кадрам~~
 - [X] 14. ~~Создать скрипт для отрисовки точек губ на видео~~
+- [ ] 15. Создать скрипт для получения статистики о количестве точек губ по каждой фонеме (получение из JSON-файла)
 
 - [ ] 20. Создать Notebook GoogleColaboratory для подготовки датасета. Обработать первое видео.
 - [ ] 21. Придумать решение проблемы c фонемами а и о. Пример проблемы:

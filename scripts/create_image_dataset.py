@@ -26,6 +26,9 @@ lip_height = args.lip_height
 count_border = args.count_border
 depress_video = args.depress_video
 
+depressed_width = 854
+depressed_height = 480
+
 #проверяем, есть ли папка - в которую хотим класть выходной файл - создаем, если нет
 output_path_exists = os.path.exists(output_path)
 if not output_path_exists:
@@ -58,7 +61,7 @@ while(True):
   if ret == True:
     
     if depress_video:
-      res_frame = cv2.resize(frame,(width,height))
+      res_frame = cv2.resize(frame,(depressed_width,depressed_height))
     else:
       res_frame = frame
     
@@ -76,5 +79,4 @@ while(True):
   if count_border>0 and count>=count_border:
     break
 cap.release()
-writer.release()
 print('Processing is ended') 

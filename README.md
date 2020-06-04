@@ -67,7 +67,9 @@ python get_maus_textgrid.py \
 
 ## Cоздание из словаря слов - словаря слово->фонемная транскрипция
 ```
-python create_words_phonemes_dict.py --i '/content/words_1_5kk.txt' --o '/content/words_phonemes_1_5kk.txt'
+python create_words_phonemes_dict.py \
+--i '/content/words_1_5kk.txt' \
+--o '/content/words_phonemes_1_5kk.txt'
 ```
 - --i - путь к входному файлу словоря {Обязательный аргумент}
 - --o - путь для выходного файла словаря слов->фонемной транскрипции. Дефолтно: /default/out_words.txt

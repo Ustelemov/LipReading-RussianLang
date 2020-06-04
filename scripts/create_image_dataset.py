@@ -66,7 +66,7 @@ while(True):
   else:
     break
   #Проверяем границу по кадрам, если нужно - выходим
-  if border_count>0 and count>=border_count:
+  if count_border>0 and count>=count_border:
     break
 cap.release()
 writer.release()

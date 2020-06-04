@@ -110,7 +110,7 @@ phonemes = info_dict.keys()
 count_df = result_df.describe().loc['count',:]
 
 #Сделаем список с процентом появлений
-counts_percent_list = [round(i*100.0/count_df.sum(),1) for i in count_df]
+counts_percent_list = [round(i*100.0/count_df.sum(),2) for i in count_df]
 
 #Создадим общий DataFrame, который выведем в файл
 count_df = pd.DataFrame({'count': count_df,'count_percent':counts_percent_list},index=phonemes)

@@ -93,7 +93,10 @@ python get_phonewords_frames.py \
 
 ## Cкрипт для получения статистики о встречи фонем
 ```
-python get_phonemes_appearence_stat.py --p '/content/stat1' --d '/content/phonemes_keys.txt' --f '/content/phonemes_frames.txt'
+python get_phonemes_appearence_stat.py \
+--p '/content/outfolder/appearence_stat' \
+--d '/content/LiReading-RussianLang/dicts/phonemes_keys.txt' \
+--f '/content/outfolder/frames_align/phonemes_frames.txt'
 ```
 - --p - путь к выходной папке, в которую буду помещены файлы. Дефолтно: /default
 - --d - путь к словарю фонем с ключами {Обязательный аргумент}
@@ -110,7 +113,10 @@ python get_phonemes_appearence_stat.py --p '/content/stat1' --d '/content/phonem
  
 ## Скрипт для получения статистики по длительности фонем в кадрах
 ```
-python get_phonemes_duration_stat.py --p '/content/stat1' --d '/content/phonemes_keys.txt' --f '/content/phonemes_frames.txt'
+python get_phonemes_duration_stat.py \
+--p '/content/outfolder/duration_stat' \
+--d '/content/LiReading-RussianLang/dicts/phonemes_keys.txt' \
+--f '/content/outfolder/frames_align/phonemes_frames.txt'
 ```
 - --p - путь к выходной папке, в которую буду помещены файлы. Дефолтно: /default
 - --d - путь к словарю фонем с ключами {Обязательный аргумент}

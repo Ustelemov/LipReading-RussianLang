@@ -28,8 +28,8 @@
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов
   - [phonemes_keys.txt](dicts/phonemes_keys.txt) - словарь фонем с ключами
 - [Датасет](dataset/)
-  - [Папка Recommendation](dataset/Recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU 15-198 секунды
-  - [Папка ivakova](dataset/ivakova) - вМесте - Мария Ивакова. https://www.youtube.com/watch?v=kslB_uplhvs 15-1527 секунды
+  - [Recommendation](dataset/Recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU 15-198 секунды
+  - [Ivakova](dataset/ivakova) - вМесте - Мария Ивакова. https://www.youtube.com/watch?v=kslB_uplhvs 15-1527 секунды
 ## Использование
 ## Ссылка на Notebook (GoogleColaboratory) для обработки Youtube-видео
 ```

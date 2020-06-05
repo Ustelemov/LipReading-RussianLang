@@ -85,7 +85,7 @@ while(True):
     
     phoneme = phonemeFrames[count]
     
-    result.append({'phoneme':phoneme,'frame_num':count,'lips_points':lips_points})
+    result.append({'phoneme':phoneme,'lips_points':lips_points})
 
 
     count = count+1

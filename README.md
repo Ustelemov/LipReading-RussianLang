@@ -21,12 +21,15 @@
   - [create_image_dataset.py](scripts/create_image_dataset.py) - создание набора изображений губ с ключем фонем\фонемой в названии файла
   - [get_draw_points_video.py](scripts/get_draw_points_video.py) - отрисовка точек губ на видео
   - [get_lips_count_stat.py](scripts/get_lips_count_stat.py) - получение статистики по количеству массивов точек губ (количеству кадров, на которые были распознаны губы) по фонемам 
+  - [stretch_txts.py](scripts/stretch_txts.py) - объединение txt файлов из папки в один txt файл
+  - [stretch_jsons.py](scripts/stretch_jsons.py) - объединение json файлов из папки в один json файл
 - [Cловари](dicts/)
   - [words_phonemes_1_5kk.txt](dicts/words_phonemes_1_5kk.txt) - словарь {слово; фонемная транскрипция}. Содержит 1531154 слов. Удалены слова с пробелами и несловарными символами (кроме -), слова с - слиты в одно слово (- заменено на пустоту)
   - [phonemes_with_examples.txt](dicts/phonemes_with_examples.txt) - словарь фонем с примерами слов
   - [phonemes_keys.txt](dicts/phonemes_keys.txt) - словарь фонем с ключами
 - [Датасет](dataset/)
-  - [Папка Recommendation](dataset/Recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU с 15 секунды по 198 секунду 
+  - [Папка Recommendation](dataset/Recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU 15-198 секунды
+  - [Папка ivakova](dataset/ivakova) - вМесте - Мария Ивакова. https://www.youtube.com/watch?v=kslB_uplhvs 15-1527 секунды
 ## Использование
 ## Ссылка на Notebook (GoogleColaboratory) для обработки Youtube-видео
 ```
@@ -34,6 +37,11 @@ https://colab.research.google.com/drive/10owAQGEvE1HsZrmy-CrpTw9AWc1c_MO4?usp=sh
 ```
 Права по ссылке - только на просмотр. Чтобы использовать (изменять): либо нажать "Open in playground" - изменения не сохраняться, но можно менять; либо File->Save a copy in Drive и уже редактировать свой вариант
 
+## Ссылка на Notebook (GoogleColaboratory) для соединения информации по нескольким видео
+```
+https://colab.research.google.com/drive/1mVKpLafqLHSBH2wS4ZJcBE0h1ZK3lqVi?usp=sharing
+```
+Права по ссылке - только на просмотр. Чтобы использовать (изменять): либо нажать "Open in playground" - изменения не сохраняться, но можно менять; либо File->Save a copy in Drive и уже редактировать свой вариант
 
 ### Установка (клонирование)
 ```

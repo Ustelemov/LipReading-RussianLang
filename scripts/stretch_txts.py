@@ -22,8 +22,7 @@ with open(out_filepath,'w') as w: #Откроем файл для записи
     with open(file_path,'r') as r:
       print(r)
       #Запишем в файл прочитанные сторки (readlines) файла
+      w.writelines(r.readlines())
       if indx!=len(files_array)-1:
-        w.writelines(r.readlines()+'\n')
-      else:
-        w.writelines(r.readlines())
+        w.write('\n')
         

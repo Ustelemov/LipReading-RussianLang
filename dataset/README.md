@@ -1,4 +1,4 @@
-Папка Recommendations - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU с 15 секунды по 198 секунду
+Папка Recommendations - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU 15 - 198 секунды
 
 Папка Ivakova - вМесте - Мария Ивакова. https://www.youtube.com/watch?v=kslB_uplhvs
 - 1 часть: 15-578 секунды

@@ -17,7 +17,13 @@ out_filepath = args.out_filepath
 
 
 with open(out_filepath,'w') as w: #Откроем файл для записи 
-  for f in sorted(glob.glob(input_path+'/*.txt'),key=os.path.abspath): #Найдем все txt файлы в папке и отсортируем по пути (если цифра больше, то файл будет позже)
+  files_array = sorted(glob.glob(input_path+'/*.txt'),key=os.path.abspath) #Найдем все txt файлы в папке и отсортируем по пути (если цифра больше, то файл будет позже)
+  for indx,file_path in enumerate(files_array):  
     with open(f,'r') as r:
       print(r)
-      w.writelines(r.readlines()) #Запишем в файл прочитанные сторки (readlines) файла
+      #Запишем в файл прочитанные сторки (readlines) файла
+      if indx!=len(files_array)-1:
+        w.writelines(r.readlines()+'\n')
+      else:
+        w.writelines(r.readlines())
+        

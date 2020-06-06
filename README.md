@@ -31,6 +31,11 @@
   - [Recommendation](dataset/Recommendations) - вМесте - Коронавирус. Рекомендации для родителей. https://www.youtube.com/watch?v=bYMnnpJdNiU 15-198 секунды
   - [Ivakova](dataset/ivakova) - вМесте - Мария Ивакова. https://www.youtube.com/watch?v=kslB_uplhvs 15-1527 секунды
 ## Использование
+## Ссылка на Notebook (GoogleColaboratory) с классификацией по точкам
+```
+https://colab.research.google.com/drive/1TdXWQGwHd95oNEJWwLWHYQXE3HO7QaId?usp=sharing
+```
+Права по ссылке - только на просмотр. Чтобы использовать (изменять): либо нажать "Open in playground" - изменения не сохраняться, но можно менять; либо File->Save a copy in Drive и уже редактировать свой вариант
 ## Ссылка на Notebook (GoogleColaboratory) для обработки Youtube-видео
 ```
 https://colab.research.google.com/drive/10owAQGEvE1HsZrmy-CrpTw9AWc1c_MO4?usp=sharing

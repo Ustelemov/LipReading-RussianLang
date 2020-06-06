@@ -3,6 +3,11 @@
 
 [Репозиторий проекта из видео](https://github.com/carykh/videoToVoice)
 
+## Список всех Forced-Aligner'ов + описание\документация
+```
+https://github.com/pettarin/forced-alignment-tools
+```
+
 ## Youtube каналы, с которых можно взять видео
  - [Вместе](https://www.youtube.com/channel/UC9nqcsavbn01KyqZ2d22X8g)
  - [Правила жизни](https://www.youtube.com/channel/UCVk1NHw3LGH-m0MvucdLEdw)

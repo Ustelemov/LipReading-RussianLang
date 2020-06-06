@@ -3,6 +3,10 @@
 
 [Репозиторий проекта из видео](https://github.com/carykh/videoToVoice)
 
+## Youtube каналы, с которых можно взять видео
+ - [Вместе](https://www.youtube.com/channel/UC9nqcsavbn01KyqZ2d22X8g)
+ - [Правила жизни](https://www.youtube.com/channel/UCVk1NHw3LGH-m0MvucdLEdw)
+
 ## В работе использованы
 - [Moviepy](https://github.com/Zulko/moviepy) - нарезка видео
 - [ffmpeg](https://github.com/kkroening/ffmpeg-python) - для извлечения аудио, скелейки аудио с видео и пр.

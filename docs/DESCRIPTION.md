@@ -4,7 +4,6 @@
 [Репозиторий проекта из видео](https://github.com/carykh/videoToVoice)
 
 ## В работе использованы
-- [Функция silentremove](https://stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist) - удаление файла, если он существует
 - [Moviepy](https://github.com/Zulko/moviepy) - нарезка видео
 - [ffmpeg](https://github.com/kkroening/ffmpeg-python) - для извлечения аудио, скелейки аудио с видео и пр.
   - [19 команд ffmpeg для любых нужд](https://habr.com/ru/post/171213/)
@@ -17,6 +16,9 @@
   - [Пример как работать с cv2 и библиотекой](https://github.com/ageitgey/face_recognition/blob/master/examples/blur_faces_on_webcam.py)
   - [Пример как работать с точками лица](https://github.com/ageitgey/face_recognition/blob/master/examples/digital_makeup.py)
 -[MAUS TextAligner](https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface/WebMAUSBasic)
+- Sampa нотация для фонем:
+  - [Таблица IPA\X-SAMPA фонем с примерами](http://developer.ivona.com/en/ttsresources/phonesets/phoneset-ru.html)
+  - [Таблица Sampa фонем с примерами](https://www.phon.ucl.ac.uk/home/sampa/russian.htm)
 
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу

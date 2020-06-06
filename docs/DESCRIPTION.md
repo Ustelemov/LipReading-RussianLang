@@ -28,6 +28,7 @@ https://github.com/pettarin/forced-alignment-tools
 - Sampa нотация для фонем:
   - [Таблица IPA\X-SAMPA фонем с примерами](http://developer.ivona.com/en/ttsresources/phonesets/phoneset-ru.html)
   - [Таблица Sampa фонем с примерами](https://www.phon.ucl.ac.uk/home/sampa/russian.htm)
+  - [Классификаторы skilearn](https://habr.com/ru/post/475552/)
 
 ## Документация по запросам к сервисам MAUS
 Может быть получена по запросу

@@ -79,7 +79,7 @@ if not output_path_exists:
     os.makedirs(output_path)
 
 source = YouTube(url)
-caption = source.captions.get_by_language_code('ru')
+caption = source.captions.get_by_language_code('a.ru')
 
 if source==None:
     sys.exit('Video not found, check url')
@@ -96,7 +96,7 @@ else:
 
 #скачивание видео с ютуба в mp4, в лучшем разрешении. Progressive - аудио и видео дорожки - вместе
 silentremove(video_path_ytb)
-streams = source.streams.filter(progressive='True',file_extension='mp4',fps=30).get_highest_resolution()
+streams = source.streams.filter(progressive='True',file_extension='mp4').get_highest_resolution()
 streams.download(output_path=output_path,filename='video_ytb')
 
 if need_to_cut:

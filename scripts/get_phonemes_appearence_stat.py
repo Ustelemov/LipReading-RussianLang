@@ -94,13 +94,14 @@ for i in range(count_frames):
     next_ph = phoneme_frames[i+1]
   
   #Если дальше такая же, то просто прибавим
-  if this_ph==next_ph:
-    tmp_count = tmp_count+1
+  #if this_ph==next_ph:
+  #  tmp_count = tmp_count+1
   #Если следующая не такая, то запишем в словарь
-  else:
-    info_dict[this_ph].append(tmp_count)
-    tmp_count = 1 #Обновим для новой фонемы
-
+  #else:
+    #info_dict[this_ph].append(tmp_count)
+    #tmp_count = 1 #Обновим для новой фонемы
+  info_dict[this_ph].append(1)
+  
 #Создадим DataFrame из словаря 
 df = pd.DataFrame.from_dict(info_dict, orient='index')
 result_df = df.transpose()

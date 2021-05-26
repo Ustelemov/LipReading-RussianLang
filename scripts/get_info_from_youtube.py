@@ -86,7 +86,7 @@ if not output_path_exists:
     os.makedirs(output_path)
 
 source = YouTube(url)
-caption = source.captions.get_by_language_code(subs_code)
+caption = source.captions.get_by_language_code('ru')
 
 if source==None:
     sys.exit('Video not found, check url')

@@ -1,3 +1,4 @@
+%%writefile get_info_from_youtube.py
 import re
 import os
 import sys
@@ -9,6 +10,7 @@ from moviepy.editor import *
 import errno
 import argparse
 import cv2
+import srt
 
 
 #Функция удаление файла,если он существует. Нужно для видео и аудиофайлов, чтобы можно было записать.
@@ -95,11 +97,16 @@ if caption==None:
     print("No russian subtitles found")
 else:
     caption_srt =(caption.generate_srt_captions())
-    math = re.findall(r'(?<=\d\n).*\n(?=\n\d)',caption_srt)
-
+    
+    subs = srt.parse(caption_srt)
+    
     with open(subtitles_path, 'w') as f:
-        for item in math:
-            f.write("%s" % item)
+        for sub in subs:
+          output_string = sub.content
+          output_wo_punct = re.sub('[^А-Яа-яA-Za-z0-9]+', ' ', output_string)
+          output_wo_spaces = re.sub("\s\s+", " ", output_wo_punct)
+          f.write("%s" % output_wo_spaces)
+         
 
 #скачивание видео с ютуба в mp4, в лучшем разрешении. Progressive - аудио и видео дорожки - вместе
 silentremove(video_path_ytb)

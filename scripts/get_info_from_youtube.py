@@ -44,7 +44,10 @@ args = parser.parse_args()
    
 
 #флаг субтитров
-subs_code = 'a.ru' if args.auto_subs else 'ru' 
+subs_code = 'a.ru'
+
+if args.auto_subs == False:
+    subs_code = 'ru'
     
 #адрес ютуб видео
 url = args.url

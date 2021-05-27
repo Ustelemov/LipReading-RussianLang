@@ -29,10 +29,14 @@ status, output = subprocess.getstatusoutput(CurlUrl)
 
 
 link = re.findall(r'(?<=<downloadLink>).*(?=</downloadLink>)',output)[0]
-response = urllib.urlopen(link)
-html = response.read().decode('utf-8')
 
-with open(output_file, 'w') as f:
-    f.write(html)
+if len(link) == 0:
+    print('System error (maybe length of subtitles is exceed)')
+else:
+    response = urllib.urlopen(link)
+    html = response.read().decode('utf-8')
 
-print('TextGrid from TextAligner MausBasic was successful save in:%s'%(output_file))
+    with open(output_file, 'w') as f:
+        f.write(html)
+
+    print('TextGrid from TextAligner MausBasic was successful save in:%s'%(output_file))

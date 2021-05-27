@@ -1,3 +1,4 @@
+%%writefile get_info_from_youtube.py
 import re
 import os
 import sys
@@ -64,6 +65,9 @@ end_sec = args.end_sec
 
 need_to_cut = True
 
+#количество слов в субтитрах
+words_count = 0
+
 #Если параметры нулевые, то обрезать видео не нужно - будет использоваться целиком
 if start_sec==end_sec==0:
     need_to_cut = False
@@ -104,8 +108,8 @@ else:
           output_string = sub.content
           output_wo_punct = re.sub('[^А-Яа-яA-Za-z0-9]+', ' ', output_string)
           output_wo_spaces = re.sub("\s\s+", " ", output_wo_punct)
+          words_count = words_count + len(output_wo_spaces.split(' ')) - 1
           f.write("%s" % output_wo_spaces)
-         
 
 #скачивание видео с ютуба в mp4, в лучшем разрешении. Progressive - аудио и видео дорожки - вместе
 silentremove(video_path_ytb)
@@ -136,6 +140,8 @@ print('---------------------')
 
 if caption!=None:
     print('Subtitles was successful download in %s'%(subtitles_path))
+    words_count = words_count + 1
+    print('Words in subtitles: %s'%(words_count))
     print('---------------------')
 
 if not need_to_cut:

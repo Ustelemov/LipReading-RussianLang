@@ -1,4 +1,3 @@
-%%writefile get_info_from_youtube.py
 import re
 import os
 import sys

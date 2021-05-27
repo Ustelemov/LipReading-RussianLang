@@ -48,8 +48,11 @@ def make_phonemes_frames_file(output_file,input_dict,fps,phonemes_keys_file,conv
       #Если требуется перевести в ключи фонем, то ключом в словарем будет фонема, а значением число
       if convert_to_keys:
         key_to_phonemes[list[0]] = list[1].split('\n')[0]
-      else: #В пративном случаем (если оставляем фонемы в файле), то ключ и значения оставим одинаковыми
-        key_to_phonemes[list[0]] = list[0]
+      else: #В прoтивном случаем (если оставляем фонемы в файле), то ключ и значения оставим одинаковыми
+        if list[0] != '<p:>':
+            key_to_phonemes[list[0]] = list[0]
+        else:
+            key_to_phonemes[list[0]] = 'p!'
 
   
   with open(output_file, 'w') as f:

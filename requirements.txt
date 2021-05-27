@@ -1,5 +1,4 @@
 srt>=3.4.1
-dlib>=19.18.0
 face-recognition>=1.3.0
 matplotlib>=3.2.1
 moviepy>=0.2.3.5

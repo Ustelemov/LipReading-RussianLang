@@ -64,12 +64,12 @@ class SSDFaceDetector():
         return faces
 
 class DlibFaceAligner:
-    def __init__(self, landmarks_path='/content/LipReading-RussianLang/models/shape_predictor_68_face_landmarks.dat'):
+    def __init__(self, landmarks_path='/content/LipReading-RussianLang/models/shape_predictor_68_face_landmarks.dat',model_path='/content/LipReading-RussianLang/models/frozen_inference_graph.pb'):
         # store the facial landmark predictor, desired output left
         # eye position, and desired output face width + height
         self.predictor = dlib.shape_predictor(landmarks_path)
 
-        self.detector = SSDFaceDetector()
+        self.detector = SSDFaceDetector(model_path)
 
     def shape_to_np(shape, dtype="int"):
       # initialize the list of (x, y)-coordinates

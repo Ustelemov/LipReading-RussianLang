@@ -3,11 +3,22 @@ import cv2
 import numpy as np
 import dlib
 
+def shape_to_np(shape, dtype="int"):
+  # initialize the list of (x, y)-coordinates
+  coords = np.zeros((shape.num_parts, 2), dtype=dtype)
+
+  # loop over all facial landmarks and convert them
+  # to a 2-tuple of (x, y)-coordinates
+  for i in range(0, shape.num_parts):
+    coords[i] = (shape.part(i).x, shape.part(i).y)
+
+  # return the list of (x, y)-coordinates
+  return coords
+
+
 class SSDFaceDetector():
 
-    def __init__(self,
-                 det_threshold=0.3, input_width = 240, input_height = 180,
-                 model_path='/content/LipReading-RussianLang/models/frozen_inference_graph.pb'):
+    def __init__(self,model_path, input_width, input_height,det_threshold=0.3):
 
         self.det_threshold = det_threshold
         self.input_width = input_width
@@ -64,79 +75,67 @@ class SSDFaceDetector():
         return faces
 
 class DlibFaceAligner:
-    def __init__(self, landmarks_path='/content/LipReading-RussianLang/models/shape_predictor_68_face_landmarks.dat',model_path='/content/LipReading-RussianLang/models/frozen_inference_graph.pb'):
+    def __init__(self,landmarks_path,model_path,SSD_input_w,SSD_input_h):
         # store the facial landmark predictor, desired output left
         # eye position, and desired output face width + height
         self.predictor = dlib.shape_predictor(landmarks_path)
 
-        self.detector = SSDFaceDetector(model_path)
-
-    def shape_to_np(shape, dtype="int"):
-      # initialize the list of (x, y)-coordinates
-      coords = np.zeros((shape.num_parts, 2), dtype=dtype)
-
-      # loop over all facial landmarks and convert them
-      # to a 2-tuple of (x, y)-coordinates
-      for i in range(0, shape.num_parts):
-        coords[i] = (shape.part(i).x, shape.part(i).y)
-
-      # return the list of (x, y)-coordinates
-      return coords
+        self.detector = SSDFaceDetector(model_path,input_width = SSD_input_w, input_height = SSD_input_h)
 
     def get_aligned_lips(self,cv2_frame,margin=50,desiredLeftLip = (0.05,0.5),desiredLipWidth=240,desiredLipHeight=240):
     
         coords = self.detector.detect_face(cv2_frame)
 
-        x1, y1, x2, y2 = [int(c) for c in coords[0]]
-        rect = dlib.rectangle(left=x1, top=y1, right=x2, bottom=y2)
+        if len(coords) == 0:
+          return []
+        else:
+          x1, y1, x2, y2 = [int(c) for c in coords[0]]
+          rect = dlib.rectangle(left=x1, top=y1, right=x2, bottom=y2)
 
-        # dlib works with gray, so as image we're waiting for bgr opencv captured image and convert that to
-        gray = cv2.cvtColor(cv2_frame, cv2.COLOR_BGR2GRAY)
+          # dlib works with gray, so as image we're waiting for bgr opencv captured image and convert that to
+          gray = cv2.cvtColor(cv2_frame, cv2.COLOR_BGR2GRAY)
 
 
-        # convert the landmark (x, y)-coordinates to a NumPy array
-        shape = self.predictor(gray, rect)
-        shape = shape_to_np(shape)
+          # convert the landmark (x, y)-coordinates to a NumPy array
+          shape = self.predictor(gray, rect)
+          shape = shape_to_np(shape)
 
-        points = np.concatenate((shape[54:61], shape[64:68],shape[48:49],shape[49:54],shape[61:64]), axis=0)
-        #bottom_lip = shape[54:61]+shape[64:68]+shape[48]
-        #top_lip = shape[49:54]+shape[61:64]
+          points = np.concatenate((shape[54:61], shape[64:68],shape[48:49],shape[49:54],shape[61:64]), axis=0)
+          #bottom_lip = shape[54:61]+shape[64:68]+shape[48]
+          #top_lip = shape[49:54]+shape[61:64]
 
-        
-        aligned_lips = []
-
-        #Параметры кадра
-        height, width, channels = cv2_frame.shape
-        
-        xMax_p = max(points,key = lambda item: item[0])
-        xMin_p = min(points,key = lambda item: item[0])
+          #Параметры кадра
+          height, width, channels = cv2_frame.shape
           
-        yMax_p = max(points,key = lambda item: item[1])
-        yMin_p = min(points,key = lambda item: item[1])
-          
-        #Удостоверимся, что не выходим за кадр
-        xMax_m = xMax_p[0]+margin if xMax_p[0]+margin<width else width-1
-        xMin_m = xMin_p[0]-margin if xMin_p[0]-margin>=0 else 0
+          xMax_p = max(points,key = lambda item: item[0])
+          xMin_p = min(points,key = lambda item: item[0])
+            
+          yMax_p = max(points,key = lambda item: item[1])
+          yMin_p = min(points,key = lambda item: item[1])
+            
+          #Удостоверимся, что не выходим за кадр
+          xMax_m = xMax_p[0]+margin if xMax_p[0]+margin<width else width-1
+          xMin_m = xMin_p[0]-margin if xMin_p[0]-margin>=0 else 0
 
-        yMax_m = yMax_p[1]+margin if yMax_p[1]+margin<height else height-1
-        yMin_m = yMin_p[1]-margin if yMin_p[1]-margin>=0 else 0
+          yMax_m = yMax_p[1]+margin if yMax_p[1]+margin<height else height-1
+          yMin_m = yMin_p[1]-margin if yMin_p[1]-margin>=0 else 0
 
-        lips_frame = cv2_frame[yMin_m:yMax_m,xMin_m:xMax_m]
+          lips_frame = cv2_frame[yMin_m:yMax_m,xMin_m:xMax_m]
 
-        #Переведем координаты в координаты нового кадра
-        #От x_min отняли margin либо если расстояние до 0 была меньше margin, то эту разницу
-        left_x_convert = margin if xMin_p[0]>margin else xMin_p[0]
+          #Переведем координаты в координаты нового кадра
+          #От x_min отняли margin либо если расстояние до 0 была меньше margin, то эту разницу
+          left_x_convert = margin if xMin_p[0]>margin else xMin_p[0]
 
-        #Посмотрим какова была разница между y координатой крайней точки и минимальной y координатой
-        #И добавим marin, либо меньше как и с left_x_convert
-        left_y_convert = (xMin_p[1]-yMin_p[1])+margin if yMin_p[1]>margin else yMin_p[1]
+          #Посмотрим какова была разница между y координатой крайней точки и минимальной y координатой
+          #И добавим marin, либо меньше как и с left_x_convert
+          left_y_convert = (xMin_p[1]-yMin_p[1])+margin if yMin_p[1]>margin else yMin_p[1]
 
 
-        #Теперь посмотрим какая разница была у правой точки с левой и добавим эту разницу
-        right_convert = (left_x_convert+(xMax_p[0]-xMin_p[0]),left_y_convert+(xMax_p[1]-xMin_p[1]))
+          #Теперь посмотрим какая разница была у правой точки с левой и добавим эту разницу
+          right_convert = (left_x_convert+(xMax_p[0]-xMin_p[0]),left_y_convert+(xMax_p[1]-xMin_p[1]))
 
-        return align.align(lips_frame,[(left_x_convert,left_y_convert)],[right_convert],
-                                desiredLeftLip,desiredLipWidth,desiredLipHeight)
+          return self.align(lips_frame,[(left_x_convert,left_y_convert)],[right_convert],
+                                  desiredLeftLip,desiredLipWidth,desiredLipHeight)
 
 
     def align(self,cv2_face_frame, leftEyePts,rightEyePts,desiredLeftEye = (0.35,0.35),desiredFaceWidth=256,desiredFaceHeight=256):

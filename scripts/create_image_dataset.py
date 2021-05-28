@@ -1,4 +1,4 @@
-from work_with_frames_funcs import get_aligned_lips
+from work_with_frames_funcs import DlibFaceAligner
 import sys
 import cv2
 import argparse
@@ -13,11 +13,10 @@ parser.add_argument('--k',dest='phonemekeys_file_name',type=str,required=True,he
 parser.add_argument('--w',dest="lip_width",type=int,default=320,help="Width of output lip picture")
 parser.add_argument('--h',dest="lip_height",type=int,default=240,help="Height of output lip picture")
 parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
-parser.add_argument('--d',dest="depress_video",type=bool,default=False,help="Need to depress resolution or not. True - need")
-
+parser.add_argument('--dw',dest="depressed_width",type=int,default=240,help="Width of input image")
+parser.add_argument('--dh',dest="depressed_height",type=int,default=180,help="Height of input image")
 
 args = parser.parse_args()
-
 
 videofile_path = args.input_video
 phonemekey_file_name = args.phonemekeys_file_name
@@ -25,10 +24,16 @@ output_path = args.output_path
 lip_width = args.lip_width
 lip_height = args.lip_height
 count_border = args.count_border
-depress_video = args.depress_video
 
-depressed_width = 854
-depressed_height = 480
+depressed_width = args.depressed_width
+depressed_height = args.depressed_height
+
+
+aligner = DlibFaceAligner('/content/LiReading-RussianLang/models/shape_predictor_68_face_landmarks.dat',
+                          '/content/LiReading-RussianLang/models/frozen_inference_graph.pb',
+                          SSD_input_w = depressed_width,
+                          SSD_input_h = depressed_height)
+
 
 #проверяем, есть ли папка - в которую хотим класть выходной файл - создаем, если нет
 output_path_exists = os.path.exists(output_path)
@@ -66,18 +71,13 @@ while(True):
     print('Time per frame: %f'%(round((time.time()-start)/count,2)))
   if ret == True:
     
-    if depress_video:
-      res_frame = cv2.resize(frame,(depressed_width,depressed_height))
-    else:
-      res_frame = frame
-    
-    lips = get_aligned_lips(res_frame,desiredLipWidth=lip_width,desiredLipHeight=lip_height)
+    lips = aligner.get_aligned_lips(frame,desiredLipWidth=lip_width,desiredLipHeight=lip_height)
     #Считаем что губы всегда максимум одни
     if len(lips)>0:
       #В названии файла зашьем номер фонем до _. После _ добавим номер кадра, чтобы избежать 
       #проблемы с повторением имени
       file_name = output_path+'/%s_%s.jpg'%(phonemekeyFrames[count],count)
-      cv2.imwrite(file_name,lips[0])
+      cv2.imwrite(file_name,lips)
     count = count+1
   else:
     break

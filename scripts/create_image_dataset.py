@@ -12,9 +12,11 @@ parser.add_argument('--p',dest="output_path",type=str,required=True,help="Output
 parser.add_argument('--k',dest='phonemekeys_file_name',type=str,required=True,help='Path to phonemkeys by frame file')
 parser.add_argument('--w',dest="lip_width",type=int,default=320,help="Width of output lip picture")
 parser.add_argument('--h',dest="lip_height",type=int,default=240,help="Height of output lip picture")
-parser.add_argument('--c',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
+parser.add_argument('--b',dest="count_border",type=int,default=-1,help="How much frames to process. -1 means all")
 parser.add_argument('--dw',dest="depressed_width",type=int,default=240,help="Width of input image")
 parser.add_argument('--dh',dest="depressed_height",type=int,default=180,help="Height of input image")
+parser.add_argument('--cs',dest="count_start",type=int,default=0,help="Starting number of counter to add to image name after _")
+
 
 args = parser.parse_args()
 
@@ -24,6 +26,7 @@ output_path = args.output_path
 lip_width = args.lip_width
 lip_height = args.lip_height
 count_border = args.count_border
+count_start = args.count_start 
 
 depressed_width = args.depressed_width
 depressed_height = args.depressed_height
@@ -76,7 +79,7 @@ while(True):
     if len(lips)>0:
       #В названии файла зашьем номер фонем до _. После _ добавим номер кадра, чтобы избежать 
       #проблемы с повторением имени
-      file_name = output_path+'/%s_%s.jpg'%(phonemekeyFrames[count],count)
+      file_name = output_path+'/%s_%s.jpg'%(phonemekeyFrames[count],count+count_start)
       cv2.imwrite(file_name,lips)
     count = count+1
   else:

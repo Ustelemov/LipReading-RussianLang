@@ -89,4 +89,4 @@ while(True):
     break
 cap.release()
 print('Processing is ended') 
-print('Last counter is %s'(count+count_start))
+print('Last counter is %s'%(count+count_start))

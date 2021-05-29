@@ -105,7 +105,7 @@ else:
     with open(subtitles_path, 'w') as f:
         for sub in subs:
           output_string = sub.content
-          output_wo_punct = re.sub('[^А-Яа-яA-Za-z0-9]+', ' ', output_string)
+          output_wo_punct = re.sub('[^А-ЯЁа-яёA-Za-z0-9]+', ' ', output_string)
           output_wo_spaces = re.sub("\s\s+", " ", output_wo_punct)
           words_count = words_count + len(output_wo_spaces.split(' ')) - 1
           f.write("%s" % output_wo_spaces)

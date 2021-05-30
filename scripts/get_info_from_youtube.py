@@ -108,7 +108,7 @@ else:
           output_wo_punct = re.sub('[^А-ЯЁа-яёA-Za-z0-9]+', ' ', output_string)
           output_wo_spaces = re.sub("\s\s+", " ", output_wo_punct)
           words_count = words_count + len(output_wo_spaces.split(' ')) - 1
-          f.write("%s" % output_wo_spaces)
+          f.write("%s " % output_wo_spaces)
 
 #скачивание видео с ютуба в mp4, в лучшем разрешении. Progressive - аудио и видео дорожки - вместе
 silentremove(video_path_ytb)
